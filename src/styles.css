@@ -1,0 +1,75 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  
+}
+
+img {
+  /* rundar hörnen */
+  border-radius: 8px;
+  /* max-width: 100%;
+  height: auto; */
+}
+
+.movies {
+  display: grid;
+  /* fr står för fraction. använd fr istället för % */
+  /* grid-template-columns: 1fr 2fr 1fr; */
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 100px;
+
+  /* Både column och row */
+  /* grid-gap: 1em; */
+  
+  /* sätter hight */
+  /* grid-auto-rows: 1000px */
+
+  /* minst 100px hight men expanderar om det behövs */
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.title {
+  background-color: grey;
+}
+
+.movie{
+/* background-color: grey; */
+display: grid;
+/* grid-template-columns: 1fr 1fr; */
+/* grid-template-columns: repeat(2, 1fr); */
+/* grid-column-gap: 30px; */
+/* grid-template-areas:
+"aa";
+
+align-items: center; */
+justify-items: center;
+}
+
+a{
+  /* grid-area: a;
+  display: grid;
+  grid-template-areas:
+   "aa";
+   align-items: center; */
+   /* margin: auto; */
+   display: grid;
+   justify-items: center;
+
+}
+
+p{
+  /* text-align: center; */
+  /* margin: auto; */
+  /* grid-area: a; */
+  align-self: start;
+}
+
+h4{
+  align-self: start;
+  justify-self: start;
+}
+
+
+
+ 

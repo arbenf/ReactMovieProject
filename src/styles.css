@@ -1,7 +1,6 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-  
 }
 
 img {
@@ -12,6 +11,7 @@ img {
 }
 
 .movies {
+  background-color: gray;
   display: grid;
   /* fr står för fraction. använd fr istället för % */
   /* grid-template-columns: 1fr 2fr 1fr; */
@@ -21,7 +21,7 @@ img {
 
   /* Både column och row */
   /* grid-gap: 1em; */
-  
+
   /* sätter hight */
   /* grid-auto-rows: 1000px */
 
@@ -33,43 +33,38 @@ img {
   background-color: grey;
 }
 
-.movie{
-/* background-color: grey; */
-display: grid;
-/* grid-template-columns: 1fr 1fr; */
-/* grid-template-columns: repeat(2, 1fr); */
-/* grid-column-gap: 30px; */
-/* grid-template-areas:
+.movie {
+  /* background-color: grey; */
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  /* grid-template-columns: repeat(2, 1fr); */
+  /* grid-column-gap: 30px; */
+  /* grid-template-areas:
 "aa";
 
 align-items: center; */
-justify-items: center;
+  justify-items: center;
 }
 
-a{
+a {
   /* grid-area: a;
   display: grid;
   grid-template-areas:
    "aa";
    align-items: center; */
-   /* margin: auto; */
-   display: grid;
-   justify-items: center;
-
+  /* margin: auto; */
+  display: grid;
+  justify-items: center;
 }
 
-p{
+p {
   /* text-align: center; */
   /* margin: auto; */
   /* grid-area: a; */
   align-self: start;
 }
 
-h4{
+h4 {
   align-self: start;
   justify-self: start;
 }
-
-
-
- 

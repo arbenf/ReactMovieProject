@@ -18,10 +18,18 @@ class App extends Component {
       .catch(error => console.log(error));
   }
 
+  searchTitle = title => {
+    console.log("searchTitle: ", title);
+    fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
+      .then(response => response.json())
+      .then(data => this.setState({ movies: data.Search }))
+      .catch(error => console.log(error));
+  };
+
   render() {
     return (
       <React.Fragment>
-        <Search />
+        <Search searchTitle={this.searchTitle} />
         <Movies movies={this.state.movies} />
       </React.Fragment>
     );

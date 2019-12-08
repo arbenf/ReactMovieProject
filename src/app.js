@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Movies from "./components/Movies";
 import Search from "./components/Search";
+import Header from "./components/Header";
+import MovieInfo from "./components/MovieInfo";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -12,7 +15,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6")
+    fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6&type=movie")
       .then(response => response.json())
       .then(data => this.setState({ movies: data.Search }))
       .catch(error => console.log(error));
@@ -28,10 +31,21 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Search searchTitle={this.searchTitle} />
-        <Movies movies={this.state.movies} />
-      </React.Fragment>
+      <Router>
+        <React.Fragment>
+          <Header />
+          <Route
+            path="/"
+            render={props => (
+              <React.Fragment>
+                <Search searchTitle={this.searchTitle} />
+                <Movies movies={this.state.movies} />
+              </React.Fragment>
+            )}
+          />
+          <Route path="movieInfo" component={MovieInfo} />
+        </React.Fragment>
+      </Router>
     );
   }
 }

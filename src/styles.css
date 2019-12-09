@@ -1,6 +1,6 @@
 .App {
   font-family: sans-serif;
-  text-align: center;
+  /* text-align: center; */
 }
 
 img {
@@ -49,16 +49,17 @@ h4 {
 }
 
 .header {
-  background-color: gray;
-  color: white;
+  /* background-color: gray; */
+
   display: grid;
   justify-items: center;
   padding: 50px;
+  margin-bottom: 10px;
   font-size: 50px;
 }
 
 .headerLink {
-  color: #fff;
+  color: black;
   text-decoration: none;
 }
 
@@ -67,4 +68,12 @@ h4 {
   text-decoration: none;
   display: grid;
   justify-items: center;
+}
+
+.searchForm {
+  /* background-color: gray; */
+  padding: 10px;
+  margin-bottom: 100px;
+  text-align: center;
+  grid-gap: 5px;
 }

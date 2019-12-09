@@ -3,7 +3,7 @@ import Movies from "./components/Movies";
 import Search from "./components/Search";
 import Header from "./components/Header";
 import MovieInfo from "./components/MovieInfo";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -32,19 +32,29 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
+        <div className="App">
           <Header />
-          <Route
-            path="/"
-            render={props => (
-              <React.Fragment>
-                <Search searchTitle={this.searchTitle} />
-                <Movies movies={this.state.movies} />
-              </React.Fragment>
-            )}
-          />
-          <Route path="/movieInfo" component={MovieInfo} />
-        </React.Fragment>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={props => (
+                <React.Fragment>
+                  <Search searchTitle={this.searchTitle} />
+                  <Movies movies={this.state.movies} />
+                </React.Fragment>
+              )}
+            />
+            <Route
+              path="/movieInfo"
+              render={props => (
+                <React.Fragment>
+                  <MovieInfo movieInfo={this.state.movies} />
+                </React.Fragment>
+              )}
+            />
+          </Switch>
+        </div>
       </Router>
     );
   }

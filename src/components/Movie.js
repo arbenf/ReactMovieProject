@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
+import MovieInfo from "./MovieInfo";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class Movie extends Component {
   render() {

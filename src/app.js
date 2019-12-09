@@ -43,7 +43,7 @@ class App extends Component {
               </React.Fragment>
             )}
           />
-          <Route path="movieInfo" component={MovieInfo} />
+          <Route path="/movieInfo" component={MovieInfo} />
         </React.Fragment>
       </Router>
     );

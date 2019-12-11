@@ -30,6 +30,7 @@ class Movies extends Component {
     //     </div>
     //   </div>
     // )
+
     return (
       <div className="movies">
         {this.props.movies.map(movie => (

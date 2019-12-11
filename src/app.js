@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Movies from "./components/Movies";
 import Search from "./components/Search";
 import Header from "./components/Header";
-import MovieInfo from "./components/MovieInfo";
+import MovieInfo from "./components/pages/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -29,6 +29,10 @@ class App extends Component {
       .catch(error => console.log(error));
   };
 
+  showMovieInfo = title => {
+    console.log("showMovieInfo title ", title);
+  };
+
   render() {
     return (
       <Router>
@@ -36,20 +40,15 @@ class App extends Component {
           <Header />
           <Switch>
             <Route
-              path="/"
               exact
+              path="/"
               render={props => (
                 <React.Fragment>
                   <Search searchTitle={this.searchTitle} />
-                  <Movies movies={this.state.movies} />
-                </React.Fragment>
-              )}
-            />
-            <Route
-              path="/movieInfo"
-              render={props => (
-                <React.Fragment>
-                  <MovieInfo movieInfo={this.state.movies} />
+                  <Movies
+                    movies={this.state.movies}
+                    // movieTitle={this.showMovieInfo}
+                  />
                 </React.Fragment>
               )}
             />

@@ -5,36 +5,28 @@ import MovieInfo from "./pages/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Movie extends Component {
+  //Todo1. skapa state där title sätts.
+  state = {
+    title: ""
+  };
+  //Todo2. Använd title till MovieInfo componenten med hjälp av Context
+  // title = () => {
+  //   console.log("Inside Movie", this.props.movie.Title);
+  //   this.props.title(this.props.movie.Title);
+  //   // this.setState({ title: this.props.movie.Title });
+  //   // console.log("Inisde movie", this.state.title);
+  // };
+
   render() {
     const { Poster, Title, Year } = this.props.movie;
     return (
-      <Router>
-        <div>
-          <div className="movie">
-            <Link className="movieLink" to="/movieInfo">
-              <img src={Poster} width="400" height="550" alt="moviePoster" />
-              <p>{Title}</p>
-            </Link>
-            <h4>Release date: {Year}</h4>
-          </div>
-          <div>
-            <Switch>
-              <Route
-                exact
-                path="/movieInfo"
-                render={props => (
-                  // <React.Fragment>
-                  <MovieInfo
-                    movieInfo={Title}
-                    // movieInfo={this.state.movies}
-                    // showMovieInfo={this.showMovieInfo}
-                  />
-                )}
-              />
-            </Switch>
-          </div>
-        </div>
-      </Router>
+      <div className="movie">
+        <Link to="/movieInfo" className="movieLink" onClick={this.title}>
+          <img src={Poster} width="400" height="550" alt="moviePoster" />
+          <p>{Title}</p>
+        </Link>
+        <h4>Release date: {Year}</h4>
+      </div>
     );
   }
 }

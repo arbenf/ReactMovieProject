@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import MovieInfo from "./pages/MovieInfo";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import {Container, Row, Col} from 'reactstrap';
 class Movies extends Component {
+  // onClick = title => {
+  //   console.log("Inside Movies", title);
+  //   this.props.title(title);
+  // };
+
   render() {
     // return (
     //   <div className="movies">
@@ -34,7 +40,7 @@ class Movies extends Component {
     return (
       <div className="movies">
         {this.props.movies.map(movie => (
-          <Movie movie={movie} key={movie.imdbID} />
+          <Movie title={this.onClick} movie={movie} key={movie.imdbID} />
         ))}
       </div>
     );

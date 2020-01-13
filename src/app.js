@@ -15,10 +15,10 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6&type=movie")
-      .then(response => response.json())
-      .then(data => this.setState({ movies: data.Search }))
-      .catch(error => console.log(error));
+    // fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6&type=movie")
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ movies: data.Search }))
+    //   .catch(error => console.log(error));
   }
 
   searchTitle = title => {
@@ -29,9 +29,17 @@ class App extends Component {
       .catch(error => console.log(error));
   };
 
-  showMovieInfo = title => {
-    console.log("showMovieInfo title ", title);
-  };
+  // title = title => {
+  //   console.log("Inside App", title);
+  //   fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
+  //     .then(response => response.json())
+  //     .then(data =>
+  //       this.setState({
+  //         movies: data.Search.filter(movie => movie.Title === title)
+  //       })
+  //     )
+  //     .catch(error => console.log(error));
+  // };
 
   render() {
     return (
@@ -45,13 +53,12 @@ class App extends Component {
               render={props => (
                 <React.Fragment>
                   <Search searchTitle={this.searchTitle} />
-                  <Movies
-                    movies={this.state.movies}
-                    // movieTitle={this.showMovieInfo}
-                  />
+                  <Movies movies={this.state.movies} title={this.title} />
                 </React.Fragment>
               )}
             />
+
+            <Route exact path="/movieInfo" render={props => <MovieInfo />} />
           </Switch>
         </div>
       </Router>

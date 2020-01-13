@@ -6,6 +6,7 @@ class Search extends Component {
     title: ""
   };
   handleClick = event => {
+    console.log("handleClick", this.state.title);
     event.preventDefault();
     this.props.searchTitle(this.state.title);
     this.setState({ title: "" });
@@ -14,6 +15,7 @@ class Search extends Component {
   handleInput = event => {
     console.log(event.target.value);
     this.setState({ title: event.target.value });
+    // console.log("Search handleInput".this.state.title);
   };
 
   render() {

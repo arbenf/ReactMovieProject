@@ -16,6 +16,8 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         items: action.payload
+=======
+
       };
     default:
       return state;

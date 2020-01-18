@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
+
 import { fetchMovies, searchMovie } from "./actions/movieActions";
+
 
 class App extends Component {
   // state = {
@@ -79,7 +81,9 @@ class App extends Component {
 
 App.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
+
   searchMovie: PropTypes.func.isRequired,
+
   movies: PropTypes.array.isRequired,
   movie: PropTypes.object.isRequired
 };
@@ -91,5 +95,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
+
   { fetchMovies, searchMovie }
+
 )(App);

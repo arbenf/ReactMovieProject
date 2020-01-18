@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class Search extends Component {
   state = {
@@ -27,7 +28,9 @@ class Search extends Component {
           // value={this.state.title}
           onChange={this.handleInput}
         />
+        {/* <Link to="/search"> */}
         <input type="submit" value="Search" />
+        {/* </Link> */}
       </form>
     );
   }

@@ -38,7 +38,7 @@ class MovieInfo extends Component {
     return (
       <div>
         {/* <img src={this.props.title} alt="img" /> */}
-        <p>{this.props.title}</p>
+        <p>{this.props.title}Movie info</p>
       </div>
     );
   }

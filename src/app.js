@@ -4,6 +4,10 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 import MovieInfo from "./components/pages/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { fetchMovies, searchMovie } from "./actions/movieActions";
 
 class App extends Component {
   // state = {
@@ -19,14 +23,16 @@ class App extends Component {
     //   .then(response => response.json())
     //   .then(data => this.setState({ movies: data.Search }))
     //   .catch(error => console.log(error));
+    this.props.fetchMovies();
   }
 
   searchTitle = title => {
-    console.log("searchTitle: ", title);
-    fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
-      .then(response => response.json())
-      .then(data => this.setState({ movies: data.Search }))
-      .catch(error => console.log(error));
+    // console.log("searchTitle: ", title);
+    // fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ movies: data.Search }))
+    //   .catch(error => console.log(error));
+    this.props.searchMovie(title);
   };
 
   // title = title => {
@@ -47,13 +53,18 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
+            {/* <Route
+              exact
+              path="/search"
+              render={props => }
+            /> */}
             <Route
               exact
               path="/"
               render={props => (
                 <React.Fragment>
                   <Search searchTitle={this.searchTitle} />
-                  <Movies movies={this.state.movies} title={this.title} />
+                  <Movies movies={this.props.movies} title={this.title} />
                 </React.Fragment>
               )}
             />
@@ -66,4 +77,19 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  fetchMovies: PropTypes.func.isRequired,
+  searchMovie: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  movie: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  movies: state.movies.items,
+  movie: state.movies.item
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchMovies, searchMovie }
+)(App);

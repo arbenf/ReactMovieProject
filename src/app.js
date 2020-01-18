@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { fetchMovies } from "./actions/movieActions";
+
+import { fetchMovies, searchMovie } from "./actions/movieActions";
+
 
 class App extends Component {
   // state = {
@@ -27,11 +29,12 @@ class App extends Component {
   }
 
   searchTitle = title => {
-    console.log("searchTitle: ", title);
-    fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
-      .then(response => response.json())
-      .then(data => this.setState({ movies: data.Search }))
-      .catch(error => console.log(error));
+    // console.log("searchTitle: ", title);
+    // fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ movies: data.Search }))
+    //   .catch(error => console.log(error));
+    this.props.searchMovie(title);
   };
 
   // title = title => {
@@ -52,6 +55,11 @@ class App extends Component {
         <div className="App">
           <Header />
           <Switch>
+            {/* <Route
+              exact
+              path="/search"
+              render={props => }
+            /> */}
             <Route
               exact
               path="/"
@@ -73,6 +81,9 @@ class App extends Component {
 
 App.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
+
+  searchMovie: PropTypes.func.isRequired,
+
   movies: PropTypes.array.isRequired,
   movie: PropTypes.object.isRequired
 };
@@ -84,5 +95,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchMovies }
+
+  { fetchMovies, searchMovie }
+
 )(App);

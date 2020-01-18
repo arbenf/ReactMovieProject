@@ -1,8 +1,8 @@
 import { FETCH_MOVIES, SEARCH_MOVIE } from "../actions/types";
 
 const initialState = {
-  movies: [],
-  movie: {}
+  items: [],
+  item: {}
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const movieReducer = (state = initialState, action) => {
     case FETCH_MOVIES:
       return {
         ...state,
-        movies: action.payload
+        items: action.payload
       };
     default:
       return state;

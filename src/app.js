@@ -4,6 +4,10 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 import MovieInfo from "./components/pages/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { fetchMovies } from "./actions/movieActions";
 
 class App extends Component {
   // state = {
@@ -19,6 +23,7 @@ class App extends Component {
     //   .then(response => response.json())
     //   .then(data => this.setState({ movies: data.Search }))
     //   .catch(error => console.log(error));
+    this.props.fetchMovies();
   }
 
   searchTitle = title => {
@@ -53,7 +58,7 @@ class App extends Component {
               render={props => (
                 <React.Fragment>
                   <Search searchTitle={this.searchTitle} />
-                  <Movies movies={this.state.movies} title={this.title} />
+                  <Movies movies={this.props.movies} title={this.title} />
                 </React.Fragment>
               )}
             />
@@ -66,4 +71,18 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  fetchMovies: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  movie: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  movies: state.movies.items,
+  movie: state.movies.item
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchMovies }
+)(App);

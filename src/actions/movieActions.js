@@ -1,4 +1,4 @@
-import { FETCH_MOVIES, SEARCH_MOVIE } from "./types";
+import { FETCH_MOVIES, SEARCH_MOVIE, MOVIE_INFO } from "./types";
 
 export const fetchMovies = () => dispatch => {
   fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6&type=movie")
@@ -23,4 +23,16 @@ export const searchMovie = title => dispatch => {
       })
     )
     .catch(error => console.log(error));
+};
+
+export const movieInfo = title => dispatch => {
+  console.log("inside movieInfo redux", title);
+  fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
+    .then(res => res.json())
+    .then(data =>
+      dispatch({
+        type: MOVIE_INFO,
+        payload: data
+      })
+    );
 };

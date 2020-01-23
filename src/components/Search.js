@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import { connect } from "react-redux";
+import { searchMovie } from "../actions/movieActions";
+
 class Search extends Component {
   state = {
     title: ""
@@ -9,7 +12,7 @@ class Search extends Component {
   handleClick = event => {
     console.log("handleClick", this.state.title);
     event.preventDefault();
-    this.props.searchTitle(this.state.title);
+    this.props.searchMovie(this.state.title);
     this.setState({ title: "" });
   };
 
@@ -37,7 +40,10 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  searchTitle: PropTypes.func.isRequired
+  searchMovie: PropTypes.func.isRequired
 };
 
-export default Search;
+export default connect(
+  null,
+  { searchMovie }
+)(Search);

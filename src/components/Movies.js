@@ -4,39 +4,15 @@ import PropTypes from "prop-types";
 import MovieInfo from "./pages/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import {Container, Row, Col} from 'reactstrap';
+
+import { connect } from "react-redux";
+import { fetchMovies } from "../actions/movieActions";
+
 class Movies extends Component {
-  // onClick = title => {
-  //   console.log("Inside Movies", title);
-  //   this.props.title(title);
-  // };
-
+  componentDidMount() {
+    this.props.fetchMovies();
+  }
   render() {
-    // return (
-    //   <div className="movies">
-    //     <div>
-    //       {/* <Movie
-    //        movie={movie}
-    //        key={movie.imdbID}
-    //        /> */}
-    //        zfsdgd
-    //     </div>
-    //      <div>
-    //       {/* <Movie
-    //        movie={movie}
-    //        key={movie.imdbID}
-    //        /> */}
-    //        zfsdgd
-    //     </div>
-    //      <div>
-    //       {/* <Movie
-    //        movie={movie}
-    //        key={movie.imdbID}
-    //        /> */}
-    //        zfsdgd
-    //     </div>
-    //   </div>
-    // )
-
     return (
       <div className="movies">
         {this.props.movies.map(movie => (
@@ -48,7 +24,17 @@ class Movies extends Component {
 }
 
 Movies.propTypes = {
-  movies: PropTypes.array.isRequired
+  fetchMovies: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  movie: PropTypes.object.isRequired
 };
 
-export default Movies;
+const mapStateToProps = state => ({
+  movies: state.movies.items,
+  movie: state.movies.item
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchMovies }
+)(Movies);

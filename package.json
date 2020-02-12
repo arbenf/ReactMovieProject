@@ -1,7 +1,7 @@
 {
   "name": "reactmovieproject",
   "version": "1.0.0",
-  "description": "",
+  "description": "A movie info webpage created with React/Redux. Data is fetched from OMDB API",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

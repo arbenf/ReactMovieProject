@@ -27,6 +27,16 @@ export const searchMovie = title => dispatch => {
 
 export const movieInfo = title => dispatch => {
   console.log("inside movieInfo redux", title);
+  // setTimeout(() => {
+  //   fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
+  //     .then(res => res.json())
+  //     .then(data =>
+  //       dispatch({
+  //         type: MOVIE_INFO,
+  //         payload: data
+  //       })
+  //     );
+  // }, 3000);
   fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
     .then(res => res.json())
     .then(data =>
@@ -36,3 +46,7 @@ export const movieInfo = title => dispatch => {
       })
     );
 };
+
+// setTimeout(() => {
+//   console.log("Hello, World!");
+// }, 3000);

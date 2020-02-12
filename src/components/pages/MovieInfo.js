@@ -1,58 +1,51 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Movie from "../Movie";
+import { movieInfo } from "../../actions/movieActions";
 
 import { connect } from "react-redux";
-// import { movieInfo } from "../../actions/movieActions";
 
 class MovieInfo extends Component {
-  // componentDidMount() {
-  //   //   this.props.movies.filter(movie =>
-  //   //     // console.log("TITLE", movie.Title)
-  //   //         fetch(
-  //   //           `https://www.omdbapi.com/?t=${movie.Title}&apikey=7a3ecfb6`
-  //   //         )
-  //   //           .then(res => res.json())
-  //   //           .then(data => this.setState({ movies: data }));
-  //   //     }
-  //   //   );
-  //   //   // console.log("MovieInfo title", title);
-  //   //   // fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
-  //   //   //   .then(res => res.json())
-  //   //   //   .then(data => this.setState({ movies: data }));
-  //   // }
-  //   // componentDidMount() {
-  //   //   fetch(`https://www.omdbapi.com/?t=${this.props.title}&apikey=7a3ecfb6`)
-  //   //     .then(response => response.json())
-  //   //     .then(data => this.setState({ movies: data }))
-  //   //     .catch(error => console.log(error));
-  //   // this.props.movieInfo(this.props.movie.Title);
-  // }
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    //Wait until data is fetched
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 250);
+  }
 
   render() {
-    console.log("Inside MovieInfo", this.props.movie.Title);
-    // console.log("MovieInfo", this.state.movies);
-    // const { Title, Poster } = this.state.movies
-    const { Poster, Plot } = this.props.movie;
+    console.log(this.props.movie.Title);
+
+    if (this.state.loading) {
+      return <div>Loading...</div>;
+    }
+    console.log(this.props.movie.Title);
     return (
       <div>
-        {/* <img src={this.props.title} alt="img" /> */}
-        <img src={Poster} width="400" height="550" alt="moviePoster" />
-        <p>{Plot}</p>
+        <img
+          src={this.props.movie.Poster}
+          width="400"
+          height="550"
+          alt="moviePoster"
+        />
+        <p>{this.props.movie.Title}</p>
       </div>
     );
   }
 }
 
-// MovieInfo.propTypes = {
-//   movieInfo: PropTypes.string.isRequired
-// };
+MovieInfo.propTypes = {
+  movieInfo: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   movie: state.movies.item
 });
 
 export default connect(
-  mapStateToProps
-  // { movieInfo }
+  mapStateToProps,
+  { movieInfo }
 )(MovieInfo);

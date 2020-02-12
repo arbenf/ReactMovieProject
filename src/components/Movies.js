@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Movie from "./Movie";
 import PropTypes from "prop-types";
-import MovieInfo from "./pages/MovieInfo";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import {Container, Row, Col} from 'reactstrap';
 
 import { connect } from "react-redux";
 import { fetchMovies } from "../actions/movieActions";
@@ -11,27 +8,33 @@ import { fetchMovies } from "../actions/movieActions";
 class Movies extends Component {
   componentDidMount() {
     this.props.fetchMovies();
+    console.log("Movies componentDidMount", this.props.movies);
+  }
+  shouldComponentUpdate() {
+    console.log("Movies shouldComponentUpdate");
+    return true;
   }
   render() {
     return (
-      <div className="movies">
-        {this.props.movies.map(movie => (
-          <Movie title={this.onClick} movie={movie} key={movie.imdbID} />
-        ))}
-      </div>
+      console.log("Movies render", this.props.movies),
+      (
+        <div className="movies">
+          {this.props.movies.map(movie => (
+            <Movie movie={movie} key={movie.imdbID} />
+          ))}
+        </div>
+      )
     );
   }
 }
 
 Movies.propTypes = {
   fetchMovies: PropTypes.func.isRequired,
-  movies: PropTypes.array.isRequired,
-  movie: PropTypes.object.isRequired
+  movies: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  movies: state.movies.items,
-  movie: state.movies.item
+  movies: state.movies.items
 });
 
 export default connect(

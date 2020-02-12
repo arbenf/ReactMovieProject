@@ -20,7 +20,14 @@ class MovieInfo extends Component {
     console.log(this.props.movie.Title);
 
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return (
+        <div class="lds-ring">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     }
     console.log(this.props.movie.Title);
     return (

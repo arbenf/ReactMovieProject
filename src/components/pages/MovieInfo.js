@@ -21,7 +21,11 @@ class MovieInfo extends Component {
 
     if (this.state.loading) {
       return (
+
         <div className="lds-ring">
+
+        <div className="lds-ring">
+
           <div />
           <div />
           <div />

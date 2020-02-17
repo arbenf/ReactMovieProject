@@ -43,6 +43,11 @@ align-items: center; */
   text-decoration: none;
 }
 
+.movieInfo {
+  display: grid;
+  justify-items: center;
+}
+
 h4 {
   align-self: center;
   justify-self: center;

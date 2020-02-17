@@ -26,7 +26,11 @@ class App extends Component {
             <Route
               exact
               path="/movieInfo"
-              /*render={props => <MovieInfo />}*/ component={MovieInfo}
+              render={props => (
+                <div className="movieInfo">
+                  <MovieInfo />
+                </div>
+              )}
             />
           </Switch>
         </div>

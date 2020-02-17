@@ -10,10 +10,10 @@ class Movies extends Component {
     this.props.fetchMovies();
     console.log("Movies componentDidMount", this.props.movies);
   }
-  shouldComponentUpdate() {
-    console.log("Movies shouldComponentUpdate");
-    return true;
-  }
+  // shouldComponentUpdate() {
+  //   console.log("Movies shouldComponentUpdate");
+  //   return true;
+  // }
   render() {
     return (
       console.log("Movies render", this.props.movies),

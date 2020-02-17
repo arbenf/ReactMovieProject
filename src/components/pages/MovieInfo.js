@@ -13,16 +13,27 @@ class MovieInfo extends Component {
     //Wait until data is fetched
     setTimeout(() => {
       this.setState({ loading: false });
-    }, 250);
+    }, 1000);
   }
 
   render() {
-    console.log(this.props.movie.Title);
+    console.log("movieInfo render", this.props.movie.Title);
 
     if (this.state.loading) {
-      return <div>Loading...</div>;
+      return (
+
+        <div className="lds-ring">
+
+        <div className="lds-ring">
+
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     }
-    console.log(this.props.movie.Title);
+    // console.log(this.props.movie.Title);
     return (
       <div>
         <img

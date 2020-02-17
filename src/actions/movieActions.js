@@ -27,26 +27,25 @@ export const searchMovie = title => dispatch => {
 
 export const movieInfo = title => dispatch => {
   console.log("inside movieInfo redux", title);
-  // setTimeout(() => {
-  //   fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
-  //     .then(res => res.json())
-  //     .then(data =>
-  //       dispatch({
-  //         type: MOVIE_INFO,
-  //         payload: data
-  //       })
-  //     );
-  // }, 3000);
-  fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
-    .then(res => res.json())
-    .then(data =>
-      dispatch({
-        type: MOVIE_INFO,
-        payload: data
-      })
-    );
-};
+  if (title.includes("&")) {
+    let newTitle = title.replace("&", "%26");
 
-// setTimeout(() => {
-//   console.log("Hello, World!");
-// }, 3000);
+    fetch(`https://www.omdbapi.com/?t=${newTitle}&apikey=7a3ecfb6`)
+      .then(res => res.json())
+      .then(data =>
+        dispatch({
+          type: MOVIE_INFO,
+          payload: data
+        })
+      );
+  } else {
+    fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
+      .then(res => res.json())
+      .then(data =>
+        dispatch({
+          type: MOVIE_INFO,
+          payload: data
+        })
+      );
+  }
+};

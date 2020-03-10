@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import Loading from "../../../components/loading/Loading";
 import PropTypes from "prop-types";
-import { movieInfo } from "../../actions/movieActions";
+import { movieInfo } from "../../../actions/movieActions";
 
 import { connect } from "react-redux";
+
+import "./movieInfo.css";
 
 class MovieInfo extends Component {
   state = {
@@ -19,26 +22,17 @@ class MovieInfo extends Component {
   render() {
     console.log("movieInfo render", this.props.movie.Title);
 
+    const { Poster, Title, Plot } = this.props.movie;
+
     if (this.state.loading) {
-      return (
-        <div className="lds-ring">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
-      );
+      return <Loading />;
     }
     // console.log(this.props.movie.Title);
     return (
       <div>
-        <img
-          src={this.props.movie.Poster}
-          width="400"
-          height="550"
-          alt="moviePoster"
-        />
-        <p>{this.props.movie.Title}</p>
+        <img src={Poster} width="400" height="550" alt="moviePoster" />
+        <p>{Title}</p>
+        <p>{Plot}</p>
       </div>
     );
   }

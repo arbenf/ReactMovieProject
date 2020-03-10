@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+import "./header.css";
+
+function header() {
   return (
     <header className="header">
       <Link className="headerLink" to="/">
@@ -11,4 +13,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default header;

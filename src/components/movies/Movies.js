@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import Movie from "./Movie";
+import Movie from "../movie/Movie";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { fetchMovies } from "../actions/movieActions";
+import { fetchMovies } from "../../actions/movieActions";
+
+import "./movies.css";
 
 class Movies extends Component {
   componentDidMount() {

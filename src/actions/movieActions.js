@@ -1,7 +1,9 @@
 import { FETCH_MOVIES, SEARCH_MOVIE, MOVIE_INFO } from "./types";
 
+const API_KEY = "7a3ecfb6";
+
 export const fetchMovies = () => dispatch => {
-  fetch("https://www.omdbapi.com/?s=batman&apikey=7a3ecfb6&type=movie")
+  fetch(`https://www.omdbapi.com/?s=batman&apikey=${API_KEY}&type=movie`)
     .then(response => response.json())
     .then(data =>
       dispatch({
@@ -14,7 +16,7 @@ export const fetchMovies = () => dispatch => {
 
 export const searchMovie = title => dispatch => {
   console.log("searchTitle inside Redux: ", title);
-  fetch(`https://www.omdbapi.com/?s=${title}&apikey=7a3ecfb6`)
+  fetch(`https://www.omdbapi.com/?s=${title}&apikey=${API_KEY}`)
     .then(response => response.json())
     .then(data =>
       dispatch({
@@ -30,7 +32,7 @@ export const movieInfo = title => dispatch => {
   if (title.includes("&")) {
     let newTitle = title.replace("&", "%26");
 
-    fetch(`https://www.omdbapi.com/?t=${newTitle}&apikey=7a3ecfb6`)
+    fetch(`https://www.omdbapi.com/?t=${newTitle}&apikey=${API_KEY}`)
       .then(res => res.json())
       .then(data =>
         dispatch({
@@ -39,7 +41,7 @@ export const movieInfo = title => dispatch => {
         })
       );
   } else {
-    fetch(`https://www.omdbapi.com/?t=${title}&apikey=7a3ecfb6`)
+    fetch(`https://www.omdbapi.com/?t=${title}&apikey=${API_KEY}`)
       .then(res => res.json())
       .then(data =>
         dispatch({

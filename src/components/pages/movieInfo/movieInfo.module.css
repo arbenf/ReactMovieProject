@@ -1,0 +1,9 @@
+.movieInfo {
+  display: grid;
+  justify-items: center;
+}
+
+.image {
+  /* rundar hörnen */
+  border-radius: 8px;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./loading.css";
+import styles from "./loading.module.css";
 
 function loading() {
   return (
-    <div className="lds-ring">
+    <div className={styles.loading}>
       <div />
       <div />
       <div />

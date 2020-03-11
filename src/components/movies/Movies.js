@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchMovies } from "../../actions/movieActions";
 
-import "./movies.css";
+import styles from "./movies.module.css";
 
 class Movies extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class Movies extends Component {
     return (
       console.log("Movies render", this.props.movies),
       (
-        <div className="movies">
+        <div className={styles.movies}>
           {this.props.movies.map(movie => (
             <Movie movie={movie} key={movie.imdbID} />
           ))}

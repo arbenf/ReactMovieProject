@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { searchMovie } from "../../actions/movieActions";
 
-import "./search.css";
+import styles from "./search.module.css";
 
 class Search extends Component {
   state = {
@@ -26,7 +26,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form className="searchForm" onSubmit={this.handleClick}>
+      <form className={styles.searchForm} onSubmit={this.handleClick}>
         <input
           type="text"
           placeholder="Enter title"

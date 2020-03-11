@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./header.css";
+import styles from "./header.module.css";
 
 function header() {
   return (
-    <header className="header">
-      <Link className="headerLink" to="/">
+    <header className={styles.header}>
+      <Link className={styles.headerLink} to="/">
         Movie Finder
       </Link>
     </header>

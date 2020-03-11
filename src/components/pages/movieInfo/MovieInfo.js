@@ -5,7 +5,7 @@ import { movieInfo } from "../../../actions/movieActions";
 
 import { connect } from "react-redux";
 
-import "./movieInfo.css";
+import styles from "./movieInfo.module.css";
 
 class MovieInfo extends Component {
   state = {
@@ -29,8 +29,14 @@ class MovieInfo extends Component {
     }
     // console.log(this.props.movie.Title);
     return (
-      <div>
-        <img src={Poster} width="400" height="550" alt="moviePoster" />
+      <div className={styles.movieInfo}>
+        <img
+          className={styles.image}
+          src={Poster}
+          width="400"
+          height="550"
+          alt="moviePoster"
+        />
         <p>{Title}</p>
         <p>{Plot}</p>
       </div>

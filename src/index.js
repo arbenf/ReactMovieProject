@@ -9,8 +9,6 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import allReducers from "./reducers";
 
-import "./styles.css";
-
 const middleWare = [thunk];
 
 const store = createStore(

@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { movieInfo } from "../actions/movieActions";
+import { movieInfo } from "../../actions/movieActions";
+
+import styles from "./movie.module.css";
 
 class Movie extends Component {
   title = () => {
@@ -13,10 +15,17 @@ class Movie extends Component {
 
   render() {
     const { Poster, Title, Year } = this.props.movie;
+
     return (
-      <div className="movie">
-        <Link to="/movieInfo" className="movieLink" onClick={this.title}>
-          <img src={Poster} width="400" height="550" alt="moviePoster" />
+      <div className={styles.movieContainer}>
+        <Link to="/movieInfo" className={styles.movieLink} onClick={this.title}>
+          <img
+            className={styles.image}
+            src={Poster}
+            width="400"
+            height="550"
+            alt="moviePoster"
+          />
           <p>{Title}</p>
         </Link>
         <h4>Release date: {Year}</h4>

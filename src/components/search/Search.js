@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { searchMovie } from "../actions/movieActions";
+import { searchMovie } from "../../actions/movieActions";
+
+import styles from "./search.module.css";
 
 class Search extends Component {
   state = {
@@ -24,14 +26,14 @@ class Search extends Component {
 
   render() {
     return (
-      <form className="searchForm" onSubmit={this.handleClick}>
+      <form className={styles.searchForm} onSubmit={this.handleClick}>
         <input
           type="text"
           placeholder="Enter title"
           // value={this.state.title}
           onChange={this.handleInput}
         />
-        {/* <Link to="/search"> */}
+        {/* <Link to="/"> */}
         <input type="submit" value="Search" />
         {/* </Link> */}
       </form>

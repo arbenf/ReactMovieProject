@@ -6,4 +6,74 @@
 .image {
   /* rundar hörnen */
   border-radius: 8px;
+.movieInfoContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  /* gap: 10px; */
+  /* justify-items: center; */
+  grid-template-areas:
+    "title ."
+    "image movieDetails";
+}
+
+.image {
+  grid-area: image;
+  /* rundar hörnen */
+  border-radius: 8px;
+  justify-self: center;
+}
+
+.title {
+  grid-area: title;
+  /* margin: 100px; */
+  justify-self: center;
+}
+
+.movieDetails {
+  grid-area: movieDetails;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plot {
+  /* background-color: lightgrey; */
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.info {
+  padding: 10px;
+  /* background-color: lightgrey; */
+}
+
+.info > div {
+  padding: 2px;
+}
+/*
+.genre {
+  grid-area: genre;
+}
+
+.director {
+  grid-area: director;
+}
+
+.actors {
+  grid-area: actors;
+}
+
+.imdbRating {
+  grid-area: imdbRating;
+}
+
+.relaesed {
+  grid-area: relaesed;
+} */
+
+.loading {
+  display: grid;
+  justify-items: center;
+  padding-top: 200px;
 }

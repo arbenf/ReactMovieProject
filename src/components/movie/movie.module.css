@@ -10,6 +10,11 @@
 align-items: center; */
   justify-items: center;
   text-decoration: none;
+.movieContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+>>>>>>> csb-1588851379707
 }
 
 .movieLink {
@@ -17,6 +22,10 @@ align-items: center; */
   text-decoration: none;
   display: grid;
   justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+>>>>>>> csb-1588851379707
 }
 
 .image {

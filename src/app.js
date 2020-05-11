@@ -7,11 +7,13 @@ import MovieInfo from "./components/pages/movieInfo/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./styles.css";
 
+import styles from "./app.module.css";
+
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className={styles.App}>
           <Header />
           <Switch>
             <Route
@@ -29,9 +31,10 @@ class App extends Component {
               exact
               path="/movieInfo"
               render={props => (
-                <div className="movieInfo">
+                <React.Fragment>
+                  <Search />
                   <MovieInfo />
-                </div>
+                </React.Fragment>
               )}
             />
           </Switch>

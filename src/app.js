@@ -5,7 +5,6 @@ import Search from "./components/search/Search";
 import Header from "./components/header/Header";
 import MovieInfo from "./components/pages/movieInfo/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./styles.css";
 
 import styles from "./app.module.css";
 

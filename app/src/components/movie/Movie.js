@@ -14,21 +14,21 @@ class Movie extends Component {
   };
 
   render() {
-    const { Poster, Title, Year } = this.props.movie;
+    const { poster_path, title, release_date } = this.props.movie;
 
     return (
       <div className={styles.movie}>
         <Link to="/movieInfo" className={styles.movieLink} onClick={this.title}>
           <img
             className={styles.image}
-            src={Poster}
+            src={"https://image.tmdb.org/t/p/w500" + poster_path}
             width="400"
             height="550"
             alt="moviePoster"
           />
-          <p>{Title}</p>
+          <p>{title}</p>
         </Link>
-        <h4>Release date: {Year}</h4>
+        <h4>Release date: {release_date}</h4>
       </div>
     );
   }

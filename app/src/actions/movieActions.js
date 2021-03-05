@@ -1,53 +1,58 @@
-import { FETCH_MOVIES, SEARCH_MOVIE, MOVIE_INFO } from "./types";
+import * as actionTypes from "./types";
 
-const API_KEY = "7a3ecfb6";
+const API_KEY = "6a63a37017cbb2d7c209d1bdafb1f600";
 
-export const fetchMovies = () => dispatch => {
-  fetch(`https://www.omdbapi.com/?s=batman&apikey=${API_KEY}&type=movie`)
-    .then(response => response.json())
-    .then(data =>
-      dispatch({
-        type: FETCH_MOVIES,
-        payload: data.Search
-      })
-    )
-    .catch(error => console.log(error));
+export const fetchMovies = () => {
+  return (dispatch) => {
+    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({
+          type: actionTypes.FETCH_MOVIES,
+          payload: data.results
+        })
+      )
+      .catch((error) => console.log(error));
+  };
 };
 
-export const searchMovie = title => dispatch => {
+export const searchMovie = (title) => (dispatch) => {
   console.log("searchTitle inside Redux: ", title);
-  fetch(`https://www.omdbapi.com/?s=${title}&apikey=${API_KEY}`)
-    .then(response => response.json())
-    .then(data =>
+  fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
+  )
+    .then((response) => response.json())
+    .then((data) =>
       dispatch({
-        type: SEARCH_MOVIE,
-        payload: data.Search
+        type: actionTypes.SEARCH_MOVIE,
+        payload: data.results
       })
     )
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 };
 
-export const movieInfo = title => dispatch => {
-  console.log("inside movieInfo redux", title);
-  if (title.includes("&")) {
-    let newTitle = title.replace("&", "%26");
+export const movieInfo = (id) => (dispatch) => {
+  fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+  )
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.MOVIE_INFO,
+        payload: data
+      })
+    )
+    .catch((error) => console.log(error));
+};
 
-    fetch(`https://www.omdbapi.com/?t=${newTitle}&apikey=${API_KEY}`)
-      .then(res => res.json())
-      .then(data =>
-        dispatch({
-          type: MOVIE_INFO,
-          payload: data
-        })
-      );
-  } else {
-    fetch(`https://www.omdbapi.com/?t=${title}&apikey=${API_KEY}`)
-      .then(res => res.json())
-      .then(data =>
-        dispatch({
-          type: MOVIE_INFO,
-          payload: data
-        })
-      );
-  }
+export const credits = (id) => (dispatch) => {
+  fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}
+  `)
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.CREDITS,
+        payload: data
+      })
+    );
 };

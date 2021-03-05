@@ -1,6 +1,8 @@
 A movie info webpage created with React/Redux.
 
-Data is fetched from OMDB API
+Data is fetched from TMDb API
+
+run npm install to install all the dependencies and then npm start to run the app
 
 # Getting Started with Create React App
 

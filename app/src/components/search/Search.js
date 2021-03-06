@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { searchMovie } from "../../actions/movieActions";
+import { searchMovie } from "../../store/actions/movieActions";
 
 import styles from "./search.module.css";
 

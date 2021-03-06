@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import { movieInfo } from "../../actions/movieActions";
+import * as actions from  "../../store/actions/movieActions";
 
 import styles from "./movie.module.css";
 
 class Movie extends Component {
-  title = () => {
-    console.log("Inside Movie", this.props.movie.Title);
-    this.props.movieInfo(this.props.movie.Title);
+  passMovieId = () => {
+    this.props.onMovieInfo(this.props.movie.id);
+    this.props.onCredits(this.props.movie.id);
   };
 
   render() {
@@ -18,7 +18,7 @@ class Movie extends Component {
 
     return (
       <div className={styles.movie}>
-        <Link to="/movieInfo" className={styles.movieLink} onClick={this.title}>
+        <Link to="/movieInfo" className={styles.movieLink} onClick={this.passMovieId}>
           <img
             className={styles.image}
             src={"https://image.tmdb.org/t/p/w500" + poster_path}
@@ -35,16 +35,18 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-  movie: PropTypes.object.isRequired,
-  movieInfo: PropTypes.func.isRequired
+  onMovieInfo: PropTypes.func.isRequired,
+  onCredits: PropTypes.func.isRequired
 };
 
-// const mapStateToProps = state => ({
-//   movies: state.movies.items,
-//   movie: state.movies.item
-// });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMovieInfo: (id) => dispatch(actions.movieInfo(id)),
+    onCredits: (id) => dispatch(actions.credits(id))
+  }
+}
 
 export default connect(
   null,
-  { movieInfo }
+ mapDispatchToProps
 )(Movie);

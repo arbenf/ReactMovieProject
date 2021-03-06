@@ -47,13 +47,15 @@ export const movieInfo = (id) => (dispatch) => {
 };
 
 export const credits = (id) => (dispatch) => {
-  fetch(`${baseUrl}movie/${id}/credits?api_key=${API_KEY}
-  `)
+  dispatch({
+    type: actionTypes.CREDITS_LOADING
+  })
+  fetch(`${baseUrl}movie/${id}/credits?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: actionTypes.CREDITS,
-        payload: data
+        payload: data,
       })
     );
 };

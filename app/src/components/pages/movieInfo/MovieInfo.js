@@ -7,20 +7,10 @@ import { connect } from "react-redux";
 import styles from "./movieInfo.module.css";
 
 class MovieInfo extends Component {
-  state = {
-    loading: true
-  };
-
-  componentDidMount() {
-    //Wait until data is fetched
-    setTimeout(() => {
-      this.setState({ loading: false });
-    }, 1000);
-  }
+ 
 
   render() {
-    console.log("movieInfo render", this.props.movie.Title);
-
+   
     const {
       poster_path,
       title,
@@ -32,7 +22,7 @@ class MovieInfo extends Component {
 
     const { cast, crew } = this.props.credits;
 
-    if (this.state.loading) {
+    if (this.props.loading) {
       return (
         <div className={styles.loading}>
           <Loading />
@@ -82,12 +72,14 @@ class MovieInfo extends Component {
 
 MovieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
-  credits: PropTypes.object.isRequired
+  credits: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   movie: state.movies.item,
-  credits: state.credits.item
+  credits: state.credits.item,
+  loading: state.credits.loading
 });
 
 export default connect(mapStateToProps)(MovieInfo);

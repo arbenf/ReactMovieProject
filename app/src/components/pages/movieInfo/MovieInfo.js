@@ -6,11 +6,8 @@ import { connect } from "react-redux";
 
 import styles from "./movieInfo.module.css";
 
-class MovieInfo extends Component {
+const movieInfo = (props) => {
  
-
-  render() {
-   
     const {
       poster_path,
       title,
@@ -18,11 +15,11 @@ class MovieInfo extends Component {
       genres,
       imdbRating,
       Released
-    } = this.props.movie;
+    } = props.movie;
 
-    const { cast, crew } = this.props.credits;
+    const { cast, crew } = props.credits;
 
-    if (this.props.loading) {
+    if (props.loading) {
       return (
         <div className={styles.loading}>
           <Loading />
@@ -67,10 +64,10 @@ class MovieInfo extends Component {
         </div>
       </div>
     );
-  }
+  
 }
 
-MovieInfo.propTypes = {
+movieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
   credits: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
@@ -82,4 +79,4 @@ const mapStateToProps = (state) => ({
   loading: state.credits.loading
 });
 
-export default connect(mapStateToProps)(MovieInfo);
+export default connect(mapStateToProps)(movieInfo);

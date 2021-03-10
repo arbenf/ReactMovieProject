@@ -13,29 +13,9 @@ class App extends Component {
       <Router>
         <div className={styles.App}>
           <Header />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <React.Fragment>
-                  <Search />
-                  <Movies />
-                </React.Fragment>
-              )}
-            />
-
-            <Route
-              exact
-              path="/movieInfo"
-              render={props => (
-                <React.Fragment>
-                  <Search />
-                  <MovieInfo />
-                </React.Fragment>
-              )}
-            />
-          </Switch>
+          <Search />
+          <Route exact path="/" component={Movies}/>
+          <Route path="/movieInfo" component={MovieInfo}/>
         </div>
       </Router>
     );

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Loading from "../../../components/loading/Loading";
 import PropTypes from "prop-types";
 
@@ -14,10 +14,27 @@ const movieInfo = (props) => {
       overview,
       genres,
       imdbRating,
-      Released
+      release_date
     } = props.movie;
 
     const { cast, crew } = props.credits;
+
+    let actors = cast.map(actor => {
+      return (
+        <li>
+          <img 
+            src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
+            width="100"
+            height="150" 
+            alt="profile_image" 
+          />
+          <div>
+            <p>{actor.original_name}</p>
+            <p className={styles.character}>{actor.character}</p>
+          </div>
+        </li>
+      );
+    })
 
     if (props.loading) {
       return (
@@ -37,31 +54,35 @@ const movieInfo = (props) => {
           alt="moviePoster"
         />
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.movieDetails}>
+        
           <div className={styles.plot}>
             <h3>Plot</h3>
             {overview}
           </div>
           <div className={styles.info}>
             <div className={styles.genre}>
-              Genre:
+              <b>Genre:</b>
               {genres.map((genre) => (
                 <span key={genre.id}> {genre.name} </span>
               ))}
             </div>
             <div className={styles.director}>
-              Director:
+              <b>Director: </b>
               {crew
                 .filter((c) => c.department === "Directing")
                 .map((c) => (
                   <span key={c.id}>{c.name}</span>
                 ))}
             </div>
-            {/* <div className={styles.actors}>Actors: {Actors}</div>
-            <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
-            <div className={styles.relaesed}>Released: {Released}</div>
+            
+            {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
+            <div className={styles.relaesed}><b>Released: </b> {release_date}</div>
           </div>
-        </div>
+          <div className={styles.actors}>
+              <h3>Cast</h3>
+              <ul>{actors}</ul>
+          </div>
+        
       </div>
     );
   

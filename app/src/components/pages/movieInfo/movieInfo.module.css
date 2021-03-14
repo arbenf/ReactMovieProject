@@ -1,8 +1,3 @@
-.movieInfo {
-  display: grid;
-  justify-items: center;
-}
-
 .movieInfoContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -11,7 +6,8 @@
   /* justify-items: center; */
   grid-template-areas:
     "title ."
-    "image movieDetails";
+    "image info"
+    "plot actors";
 }
 
 .image {
@@ -36,11 +32,13 @@
 
 .plot {
   /* background-color: lightgrey; */
+  grid-area: plot;
   border-radius: 8px;
   padding: 10px;
 }
 
 .info {
+  grid-area: info;
   padding: 10px;
   /* background-color: lightgrey; */
 }
@@ -48,7 +46,7 @@
 .info > div {
   padding: 2px;
 }
-/*
+
 .genre {
   grid-area: genre;
 }
@@ -61,13 +59,43 @@
   grid-area: actors;
 }
 
+.actors h3 {
+  margin-left: 40px;
+}
+
+.actors ul {
+  list-style: none;
+}
+
+.actors li {
+  display: flex;
+}
+
+.actors p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.actors div {
+  margin-top: 115px;
+}
+
+.actors img {
+  margin: 0px 10px 10px 0px;
+}
+
+.character {
+  color: #000; /* Fallback for older browsers */
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .imdbRating {
   grid-area: imdbRating;
 }
 
 .relaesed {
   grid-area: relaesed;
-} */
+}
 
 .loading {
   display: grid;

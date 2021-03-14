@@ -9,7 +9,7 @@ import styles from "./movieInfo.module.css";
 const movieInfo = (props) => {
  
     const {
-      poster_path,
+      backdrop_path,
       title,
       overview,
       genres,
@@ -31,9 +31,9 @@ const movieInfo = (props) => {
       <div className={styles.movieInfoContainer}>
         <img
           className={styles.image}
-          src={"https://image.tmdb.org/t/p/w500" + poster_path}
-          width="400"
-          height="550"
+          src={"https://image.tmdb.org/t/p/w500" + backdrop_path}
+          width="600"
+          height="350"
           alt="moviePoster"
         />
         <h3 className={styles.title}>{title}</h3>

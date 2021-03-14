@@ -10,7 +10,7 @@ export const fetchMovies = () => {
       .then((data) =>
         dispatch({
           type: actionTypes.FETCH_MOVIES,
-          payload: data.results
+          payload: data.results    
         })
       )
       .catch((error) => console.log(error));

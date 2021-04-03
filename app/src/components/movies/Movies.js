@@ -18,7 +18,7 @@ class Movies extends Component {
       (
         <div className={styles.movies}>
           {this.props.movies.map(movie => (
-            <Movie movie={movie} key={movie.id} id={movie.id} />
+            <Movie movie={movie} key={movie.id}/>
           ))}
         </div>
       )

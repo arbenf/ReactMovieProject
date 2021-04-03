@@ -9,16 +9,16 @@ import styles from "./movie.module.css";
 
 const movie = (props) => {
 
-  const passMovieId = () => {
-    props.onMovieInfo(props.movie.id);
-    props.onCredits(props.movie.id);
+  const passMovieId = (id) => {
+    props.onMovieInfo(id);
+    props.onCredits(id);
   };
 
-    const { poster_path, title, release_date } = props.movie;
+    const { poster_path, title, release_date, id } = props.movie;
 
     return (
       <div className={styles.movie}>
-        <Link to="/movieInfo" className={styles.movieLink} onClick={() => passMovieId()}>
+        <Link to="/movieInfo" className={styles.movieLink} onClick={() => passMovieId(id)}>
           <img
             className={styles.image}
             src={"https://image.tmdb.org/t/p/w500" + poster_path}

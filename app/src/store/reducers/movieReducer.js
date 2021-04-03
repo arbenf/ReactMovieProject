@@ -1,27 +1,34 @@
 
-import { FETCH_MOVIES, SEARCH_MOVIE, MOVIE_INFO } from "../actions/types";
+import * as actionTypes from "../actions/types";
 
 const initialState = {
   items: [],
-  item: {}
+  item: {},
+  loading: false
 };
 
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_MOVIES:
+    case actionTypes.FETCH_MOVIES:
       return {
         ...state,
         items: action.payload
       };
-    case SEARCH_MOVIE:
+    case actionTypes.SEARCH_MOVIE:
       return {
         ...state,
         items: action.payload
       };
-    case MOVIE_INFO:
+      case actionTypes.MOVIEINFO_LOADING:
+        return {
+          ...state,
+          loading: true
+        }
+    case actionTypes.MOVIE_INFO:
       return {
         ...state,
-        item: action.payload
+        item: action.payload,
+        loading: false
       };
     default:
       return state;

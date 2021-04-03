@@ -33,6 +33,9 @@ export const searchMovie = (title) => (dispatch) => {
 };
 
 export const movieInfo = (id) => (dispatch) => {
+  dispatch({
+    type: actionTypes.MOVIEINFO_LOADING
+  })
   fetch(
     `${baseUrl}movie/${id}?api_key=${API_KEY}&language=en-US`
   )

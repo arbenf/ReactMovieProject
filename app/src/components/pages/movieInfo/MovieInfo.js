@@ -36,7 +36,7 @@ const movieInfo = (props) => {
       );
     })
 
-    if (props.loading) {
+    if (props.loadingMovie && props.loadingCredits) {
       return (
         <div className={styles.loading}>
           <Loading />
@@ -97,7 +97,8 @@ movieInfo.propTypes = {
 const mapStateToProps = (state) => ({
   movie: state.movies.item,
   credits: state.credits.item,
-  loading: state.credits.loading
+  loadingCredits: state.credits.loading,
+  loadingMovie: state.movies.loading
 });
 
 export default connect(mapStateToProps)(movieInfo);

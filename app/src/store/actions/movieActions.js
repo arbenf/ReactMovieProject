@@ -62,3 +62,14 @@ export const credits = (id) => (dispatch) => {
       })
     );
 };
+
+export const getActorDetails = (actorId) => (dispatch) => {
+  fetch(`${baseUrl}person/${actorId}?api_key=${API_KEY}`)
+  .then((res) => res.json())
+  .then((data) => 
+    dispatch({
+      type: actionTypes.GET_ACTOR_DETAILS,
+      payload: data
+    })
+  )
+};

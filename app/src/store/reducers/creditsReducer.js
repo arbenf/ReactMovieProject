@@ -5,6 +5,7 @@ const initialState = {
         cast: [],
         crew: []
     },
+    actorDetails: {},
     loading: false
 }
 
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 item: action.payload,
                 loading: false
+            }
+        case actionTypes.GET_ACTOR_DETAILS:
+            return {
+                ...state,
+                actorDetails: action.payload
             }
             default:
                 return state;

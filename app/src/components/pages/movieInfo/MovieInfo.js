@@ -1,12 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import Loading from "../../../components/loading/Loading";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
+import * as actions from "../../../store/actions/movieActions";
 
 import styles from "./movieInfo.module.css";
 
 const movieInfo = (props) => {
+
+ const passActorId = (actorId) => {
+   props.onGetActorDetails(actorId);
+ }
  
     const {
       backdrop_path,
@@ -21,18 +27,20 @@ const movieInfo = (props) => {
 
     let actors = cast.map(actor => {
       return (
-        <li>
-          <img 
-            src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
-            width="100"
-            height="150" 
-            alt="profile_image" 
-          />
-          <div>
-            <p>{actor.original_name}</p>
-            <p className={styles.character}>{actor.character}</p>
-          </div>
-        </li>
+          <li key={actor.id} onClick={() => passActorId(actor.id)}>
+          <Link to="/actorsInfo">
+            <img 
+              src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
+              width="100"
+              height="150" 
+              alt="profile_image" 
+            />
+            </Link>
+            <div>
+              <p>{actor.original_name}</p>
+              <p className={styles.character}>{actor.character}</p>
+            </div>
+          </li>
       );
     })
 
@@ -91,7 +99,8 @@ const movieInfo = (props) => {
 movieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
   credits: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired
+  loadingCredits: PropTypes.bool.isRequired,
+  loadingMovie: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -101,4 +110,10 @@ const mapStateToProps = (state) => ({
   loadingMovie: state.movies.loading
 });
 
-export default connect(mapStateToProps)(movieInfo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetActorDetails: (actorId) => dispatch(actions.getActorDetails(actorId))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(movieInfo);

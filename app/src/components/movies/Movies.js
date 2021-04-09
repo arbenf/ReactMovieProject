@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Movie from "../movie/Movie";
 import PropTypes from "prop-types";
 
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import * as actions from "../../store/actions/movieActions";
 
 import styles from "./movies.module.css";
@@ -17,8 +17,8 @@ class Movies extends Component {
       console.log("Movies render", this.props.movies),
       (
         <div className={styles.movies}>
-          {this.props.movies.map(movie => (
-            <Movie movie={movie} key={movie.id}/>
+          {this.props.movies.map((movie) => (
+            <Movie movie={movie} key={movie.id} />
           ))}
         </div>
       )
@@ -31,17 +31,14 @@ Movies.propTypes = {
   onFetchMovies: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movies: state.movies.items
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onFetchMovies: () => dispatch(actions.fetchMovies())
-  }
-}
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);

@@ -3,9 +3,10 @@ import React from "react";
 import {connect} from "react-redux";
 
 const actorDetails = (props) => {
-  let profileImage = props.actorImages[1];
+  let profileImage = {...props.actorImages[1]};
+
   if (props.actorImages.length < 2) {
-    profileImage = props.actorImages[0];
+    profileImage = {...props.actorImages[0]};
   }
 
   return (

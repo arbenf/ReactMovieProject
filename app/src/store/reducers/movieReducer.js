@@ -1,4 +1,3 @@
-
 import * as actionTypes from "../actions/types";
 
 const initialState = {
@@ -19,11 +18,11 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         items: action.payload
       };
-      case actionTypes.MOVIEINFO_LOADING:
-        return {
-          ...state,
-          loading: true
-        }
+    case actionTypes.MOVIEINFO_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     case actionTypes.MOVIE_INFO:
       return {
         ...state,
@@ -36,6 +35,3 @@ const movieReducer = (state = initialState, action) => {
 };
 
 export default movieReducer;
-
-
-

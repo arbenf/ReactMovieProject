@@ -62,6 +62,9 @@ export const credits = (id) => (dispatch) => {
 };
 
 export const getActorDetails = (actorId) => (dispatch) => {
+  dispatch({
+    type: actionTypes.ACTOR_DETAILS_LOADING
+  });
   fetch(`${baseUrl}person/${actorId}?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
@@ -73,6 +76,9 @@ export const getActorDetails = (actorId) => (dispatch) => {
 };
 
 export const getActorImages = (actorId) => (dispatch) => {
+  dispatch({
+    type: actionTypes.IMAGES_LOADING
+  });
   fetch(`${baseUrl}person/${actorId}/images?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>

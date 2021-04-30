@@ -32,7 +32,7 @@ Movies.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.movies.items
+  movies: state.movies.movies
 });
 
 const mapDispatchToProps = (dispatch) => {

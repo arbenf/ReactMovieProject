@@ -1,8 +1,10 @@
 import * as actionTypes from "../actions/types";
 
 const initialState = {
-  items: [],
-  item: {},
+  movies: [],
+  movie: {
+    genres: []
+  },
   loading: false
 };
 
@@ -11,12 +13,12 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.FETCH_MOVIES:
       return {
         ...state,
-        items: action.payload
+        movies: [...action.payload]
       };
     case actionTypes.SEARCH_MOVIE:
       return {
         ...state,
-        items: action.payload
+        movies: [...action.payload]
       };
     case actionTypes.MOVIEINFO_LOADING:
       return {
@@ -26,7 +28,7 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.MOVIE_INFO:
       return {
         ...state,
-        item: action.payload,
+        movie: {...action.payload, genres: [...action.payload.genres]},
         loading: false
       };
     default:

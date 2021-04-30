@@ -1,11 +1,13 @@
 import * as actionTypes from "../actions/types";
 
 const initialState = {
-  item: {
+  credits: {
     cast: [],
     crew: []
   },
-  actorDetails: {},
+  actorDetails: {
+    alsoKnownAs: []
+  },
   actorImages: [],
   loading: false
 };
@@ -20,18 +22,36 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CREDITS:
       return {
         ...state,
-        item: action.payload,
+        credits: {
+          ...action.payload,
+          cast: [...action.payload.cast],
+          crew: [...action.payload.crew]
+        },
         loading: false
+      };
+    case actionTypes.ACTOR_DETAILS_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     case actionTypes.GET_ACTOR_DETAILS:
       return {
         ...state,
-        actorDetails: action.payload
+        actorDetails: {
+          ...action.payload,
+          alsoKnownAs: [...action.payload.also_known_as]
+        },
+        loading: false
+      };
+    case actionTypes.IMAGES_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     case actionTypes.GET_ACTOR_IMAGES:
       return {
         ...state,
-        actorImages: action.payload
+        actorImages: [...action.payload]
       };
     default:
       return state;

@@ -37,15 +37,7 @@ const movieInfo = (props) => {
     );
   });
 
-  if (props.loadingMovie && props.loadingCredits) {
-    return (
-      <div className={styles.loading}>
-        <Loading />
-      </div>
-    );
-  }
-
-  return (
+  let movieInfo = (
     <div className={styles.movieInfoContainer}>
       <img
         className={styles.image}
@@ -78,7 +70,7 @@ const movieInfo = (props) => {
 
         {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
         <div className={styles.relaesed}>
-          <b>Released: </b> {release_date}
+          <b>Release date: </b> {release_date}
         </div>
       </div>
       <div className={styles.actors}>
@@ -87,6 +79,16 @@ const movieInfo = (props) => {
       </div>
     </div>
   );
+
+  if (props.loadingMovie && props.loadingCredits) {
+    movieInfo = (
+      <div className={styles.loading}>
+        <Loading />
+      </div>
+    );
+  }
+
+  return movieInfo;
 };
 
 movieInfo.propTypes = {
@@ -97,8 +99,8 @@ movieInfo.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.movies.item,
-  credits: state.credits.item,
+  movie: state.movies.movie,
+  credits: state.credits.credits,
   loadingCredits: state.credits.loading,
   loadingMovie: state.movies.loading
 });

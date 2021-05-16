@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styles from "./header.module.css";
 
@@ -8,9 +8,10 @@ function header() {
     <header className={styles.header}>
       <nav>
         <ul>
-          <li>Movies</li>
-          <li>Tv Shows</li>
-          <li>
+          <li className={styles.logo}>The Movie Finder</li>
+          <li className={styles.genres}>Movies</li>
+          <li className={styles.genres}>Tv Shows</li>
+          <li className={styles.fourth}>
             <input type="text" placeholder="Search" />
           </li>
         </ul>

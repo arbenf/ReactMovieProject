@@ -1,11 +1,38 @@
 .header {
-  /* background-color: gray; */
+  background-color: gray;
+  /* padding: 1KUpx; */
+}
 
+.header ul {
   display: flex;
+  /* justify-content: flex-start; */
   align-items: center;
-  padding: 50px;
-  margin-bottom: 10px;
-  font-size: 50px;
+  list-style-type: none;
+  margin: 0px;
+}
+
+.logo {
+  /* display: flex;
+  align-items: flex-end; */
+  margin-right: 100px;
+  font-size: xx-large;
+  color: darkred;
+  cursor: pointer;
+  padding: 10px 0px 10px 0px;
+}
+
+.genres {
+  /* display: flex; */
+  /* align-items: center; */
+  margin-right: 50px;
+  font-size: large;
+  cursor: pointer;
+  padding: 10px 0px 10px 0px;
+  color: rgb(53, 49, 49);
+}
+
+.fourth {
+  margin-left: auto;
 }
 
 .headerLink {

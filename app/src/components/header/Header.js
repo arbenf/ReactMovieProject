@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "../search/Search";
 import { Link } from "react-router-dom";
 
 import styles from "./header.module.css";
@@ -8,11 +9,15 @@ function header() {
     <header className={styles.header}>
       <nav>
         <ul>
-          <li className={styles.logo}>The Movie Finder</li>
+          <li className={styles.logo}>
+            <Link className={styles.headerLink} to="/">
+              The Movie Finder
+            </Link>
+          </li>
           <li className={styles.genres}>Movies</li>
           <li className={styles.genres}>Tv Shows</li>
           <li className={styles.fourth}>
-            <input type="text" placeholder="Search" />
+            <Search />
           </li>
         </ul>
       </nav>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Movies from "./components/movies/Movies";
-import Search from "./components/search/Search";
 import Header from "./components/header/Header";
 import MovieInfo from "./components/pages/movieInfo/MovieInfo";
 import ActorDetails from "./components/pages/actorDetails/actorDetails";
@@ -14,10 +13,9 @@ class App extends Component {
       <Router>
         <div className={styles.App}>
           <Header />
-          <Search />
-          <Route exact path="/" component={Movies}/>
-          <Route path="/movieInfo" component={MovieInfo}/>
-          <Route path="/actorsInfo" component={ActorDetails}/>
+          <Route exact path="/" component={Movies} />
+          <Route path="/movieInfo" component={MovieInfo} />
+          <Route path="/actorsInfo" component={ActorDetails} />
         </div>
       </Router>
     );

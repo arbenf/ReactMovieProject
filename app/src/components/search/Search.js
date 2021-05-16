@@ -9,16 +9,16 @@ import styles from "./search.module.css";
 
 class Search extends Component {
   state = {
-    title: ""
+    title: "",
   };
-  handleClick = event => {
+  handleClick = (event) => {
     console.log("handleClick", this.state.title);
     event.preventDefault();
     this.props.searchMovie(this.state.title);
     this.setState({ title: "" });
   };
 
-  handleInput = event => {
+  handleInput = (event) => {
     console.log(event.target.value);
     this.setState({ title: event.target.value });
     // console.log("Search handleInput".this.state.title);
@@ -30,7 +30,7 @@ class Search extends Component {
         <input
           type="text"
           placeholder="Enter title"
-          // value={this.state.title}
+          value={this.state.title}
           onChange={this.handleInput}
         />
         {/* <Link to="/"> */}
@@ -42,10 +42,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  searchMovie: PropTypes.func.isRequired
+  searchMovie: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { searchMovie }
-)(Search);
+export default connect(null, { searchMovie })(Search);

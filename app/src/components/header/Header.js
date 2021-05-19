@@ -14,8 +14,22 @@ function header() {
               The Movie Finder
             </Link>
           </li>
-          <li className={styles.genres}>Movies</li>
-          <li className={styles.genres}>Tv Shows</li>
+          <div className={styles.dropdown}>
+            <li className={styles.genres}>Movies</li>
+            <div className={styles.dropdownContent}>
+              <a href="#">Popular</a>
+              <a href="#">Top 100</a>
+              <a href="#">New releases</a>
+            </div>
+          </div>
+          <div className={styles.dropdown}>
+            <li className={styles.genres}>Tv Shows</li>
+            <div className={styles.dropdownContent}>
+              <a href="#">Popular</a>
+              <a href="#">Top 100</a>
+              <a href="#">New releases</a>
+            </div>
+          </div>
           <li className={styles.fourth}>
             <Search />
           </li>

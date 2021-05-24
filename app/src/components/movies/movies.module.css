@@ -1,5 +1,4 @@
 .movies {
-  /* background-color: gray; */
   display: grid;
   /* fr står för fraction. använd fr istället för % */
   /* grid-template-columns: 1fr 2fr 1fr; */

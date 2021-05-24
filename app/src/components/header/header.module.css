@@ -1,9 +1,24 @@
-.header {
+header {
+  position: fixed;
+  width: 100%;
   background-color: gray;
-  margin-bottom: 100px;
+  z-index: 2;
+  top: 0px;
 }
 
-.header ul {
+.active {
+  visibility: visible;
+  transition: all 0.3s;
+  transition-delay: 0.3s;
+}
+.hidden {
+  visibility: hidden;
+  transition: all 0.3s;
+  transition-delay: 0.3s;
+  transform: translateY(-100%);
+}
+
+header ul {
   display: flex;
   align-items: center;
   list-style-type: none;

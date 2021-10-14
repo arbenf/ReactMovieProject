@@ -1,8 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import * as actions from "../../store/actions/movieActions";
 
 import styles from "./movie.module.css";
@@ -13,7 +13,7 @@ const movie = (props) => {
     props.onCredits(id);
   };
 
-  const {poster_path, title, id} = props.movie;
+  const { poster_path, title, id } = props.movie;
 
   return (
     <div className={styles.movie}>
@@ -37,13 +37,13 @@ const movie = (props) => {
 
 movie.propTypes = {
   onMovieInfo: PropTypes.func.isRequired,
-  onCredits: PropTypes.func.isRequired
+  onCredits: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onMovieInfo: (id) => dispatch(actions.movieInfo(id)),
-    onCredits: (id) => dispatch(actions.credits(id))
+    onCredits: (id) => dispatch(actions.credits(id)),
   };
 };
 

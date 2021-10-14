@@ -1,7 +1,7 @@
 header {
   position: fixed;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(238, 227, 227);
   z-index: 2;
   top: 0px;
 }
@@ -26,6 +26,7 @@ header ul {
 }
 
 .logo {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-right: 50px;
   font-size: xx-large;
   cursor: pointer;
@@ -44,7 +45,7 @@ header ul {
 }
 
 .headerLink {
-  color: darkred;
+  color: rgb(177, 48, 36);
   text-decoration: none;
 }
 

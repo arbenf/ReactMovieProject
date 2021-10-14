@@ -10,7 +10,7 @@ export const fetchMovies = () => {
       .then((data) =>
         dispatch({
           type: actionTypes.FETCH_MOVIES,
-          payload: data.results
+          payload: data.results,
         })
       )
       .catch((error) => console.log(error));
@@ -26,7 +26,7 @@ export const searchMovie = (title) => (dispatch) => {
     .then((data) =>
       dispatch({
         type: actionTypes.SEARCH_MOVIE,
-        payload: data.results
+        payload: data.results,
       })
     )
     .catch((error) => console.log(error));
@@ -34,14 +34,14 @@ export const searchMovie = (title) => (dispatch) => {
 
 export const movieInfo = (id) => (dispatch) => {
   dispatch({
-    type: actionTypes.MOVIEINFO_LOADING
+    type: actionTypes.MOVIEINFO_LOADING,
   });
   fetch(`${baseUrl}movie/${id}?api_key=${API_KEY}&language=en-US`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: actionTypes.MOVIE_INFO,
-        payload: data
+        payload: data,
       })
     )
     .catch((error) => console.log(error));
@@ -49,42 +49,42 @@ export const movieInfo = (id) => (dispatch) => {
 
 export const credits = (id) => (dispatch) => {
   dispatch({
-    type: actionTypes.CREDITS_LOADING
+    type: actionTypes.CREDITS_LOADING,
   });
   fetch(`${baseUrl}movie/${id}/credits?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: actionTypes.CREDITS,
-        payload: data
+        payload: data,
       })
     );
 };
 
 export const getActorDetails = (actorId) => (dispatch) => {
   dispatch({
-    type: actionTypes.ACTOR_DETAILS_LOADING
+    type: actionTypes.ACTOR_DETAILS_LOADING,
   });
   fetch(`${baseUrl}person/${actorId}?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: actionTypes.GET_ACTOR_DETAILS,
-        payload: data
+        payload: data,
       })
     );
 };
 
 export const getActorImages = (actorId) => (dispatch) => {
   dispatch({
-    type: actionTypes.IMAGES_LOADING
+    type: actionTypes.IMAGES_LOADING,
   });
   fetch(`${baseUrl}person/${actorId}/images?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: actionTypes.GET_ACTOR_IMAGES,
-        payload: data.profiles
+        payload: data.profiles,
       })
     );
 };

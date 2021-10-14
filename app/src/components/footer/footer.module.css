@@ -1,0 +1,49 @@
+.footer {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  background-color: rgb(238, 227, 227);
+  height: 300px;
+  margin-top: 50px;
+}
+
+.tmdbLogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 50px;
+}
+
+.tmdbLogo p {
+  margin-bottom: 0;
+}
+
+.InfoAndContact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 50px;
+}
+
+.InfoAndContact p {
+  margin-bottom: 0;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: xx-large;
+  color: rgb(177, 48, 36);
+}
+
+.logoAndInfo {
+  display: flex;
+  /* justify-content: center; */
+}

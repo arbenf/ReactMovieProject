@@ -13,20 +13,18 @@ class Header extends Component {
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
+
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
+
   handleScroll = () => {
-    // console.log(document.body.getBoundingClientRect());
+    console.log(document.body.getBoundingClientRect());
     this.setState({
       scrollPos: document.body.getBoundingClientRect().top,
       show: document.body.getBoundingClientRect().top > this.state.scrollPos,
     });
   };
-  // render() {
-  //   console.log(this.state);
-  //   return <nav className={this.state.show ? "active" : "hidden"}>Navbar</nav>;
-  // }
 
   render() {
     return (
@@ -35,7 +33,7 @@ class Header extends Component {
           <ul>
             <li className={styles.logo}>
               <Link className={styles.headerLink} to="/">
-                The Movie Finder
+                TheMovieFinder
               </Link>
             </li>
             <div className={styles.dropdown}>
@@ -59,19 +57,6 @@ class Header extends Component {
             </li>
           </ul>
         </nav>
-
-        {/* <img
-          src={
-            "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-          }
-          width="100"
-          height="150"
-          alt="logo"
-        />
-        <Link className={styles.headerLink} to="/">
-          Movie Finder
-        </Link>
-        <div className={styles.div} /> */}
       </header>
     );
   }

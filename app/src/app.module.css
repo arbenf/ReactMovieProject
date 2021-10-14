@@ -1,5 +1,6 @@
 .App {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: sans-serif;
   position: relative;
-  margin-top: 150px;
+  padding-top: 150px;
+  box-sizing: border-box;
 }

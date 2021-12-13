@@ -1,23 +1,24 @@
 import React from "react";
 import Loading from "../../../components/loading/Loading";
 
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 import styles from "./actorDetails.module.css";
 
 const actorDetails = (props) => {
-  let profileImage = {...props.actorImages[1]};
+  let profileImage = { ...props.actorImages[1] };
 
   if (props.actorImages.length < 2) {
-    profileImage = {...props.actorImages[0]};
+    profileImage = { ...props.actorImages[0] };
   }
 
   const {
     name,
     alsoKnownAs,
     birthday,
+    deathday,
     place_of_birth,
-    biography
+    biography,
   } = props.actorDetails;
 
   let aNa = alsoKnownAs.filter((name) => name.replace(/[^a-zA-Z]/gm, ""));
@@ -25,6 +26,23 @@ const actorDetails = (props) => {
     aNa.push("Unknown");
     aNa = aNa[0];
   }
+
+  const getAge = () => {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let month = today.getMonth() - birthDate.getMonth();
+    if (month < 0) {
+      age--;
+    }
+    if (birthday === null) {
+      age = null;
+    }
+    if (deathday != null) {
+      age = "Passed away in " + deathday;
+    }
+    return age;
+  };
 
   let actorDetails = (
     <div className={styles.actorDetails}>
@@ -41,6 +59,9 @@ const actorDetails = (props) => {
         <div className={styles.info}>
           <p>
             <b>Also known as:</b> {aNa}
+          </p>
+          <p>
+            <b>Age:</b> {getAge()}
           </p>
           <p>
             <b>Birthday:</b> {birthday}
@@ -69,7 +90,7 @@ const mapStateToProps = (state) => {
     actorDetails: state.credits.actorDetails,
     actorImages: state.credits.actorImages,
     loadingActorDetails: state.credits.loading,
-    loadingImages: state.credits.loading
+    loadingImages: state.credits.loading,
   };
 };
 

@@ -11,6 +11,7 @@ const movie = (props) => {
   const passMovieId = (id) => {
     props.onMovieInfo(id);
     props.onCredits(id);
+    props.onWatchProviders(id);
   };
 
   const { poster_path, title, id } = props.movie;
@@ -44,6 +45,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onMovieInfo: (id) => dispatch(actions.movieInfo(id)),
     onCredits: (id) => dispatch(actions.credits(id)),
+    onWatchProviders: (id) => dispatch(actions.getWatchProviders(id)),
   };
 };
 

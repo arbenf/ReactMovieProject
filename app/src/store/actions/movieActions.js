@@ -88,3 +88,15 @@ export const getActorImages = (actorId) => (dispatch) => {
       })
     );
 };
+
+export const getWatchProviders = (movieId) => (dispatch) => {
+  fetch(`${baseUrl}movie/${movieId}/watch/providers?api_key=${API_KEY}`)
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.GET_WATCH_PROVIDERS,
+        payload: data,
+      })
+    )
+    .catch((error) => console.log(error));
+};

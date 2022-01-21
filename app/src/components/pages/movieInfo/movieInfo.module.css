@@ -7,6 +7,7 @@
   grid-template-areas:
     "title ."
     "image info"
+    ". watchProviders"
     "plot actors";
 }
 
@@ -53,6 +54,10 @@
 
 .director {
   grid-area: director;
+}
+
+.watchProviders {
+  grid-area: watchProviders;
 }
 
 .actors {

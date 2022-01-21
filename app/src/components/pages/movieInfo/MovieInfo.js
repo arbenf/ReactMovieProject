@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loading from "../../../components/loading/Loading";
 import PropTypes from "prop-types";
 
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import * as actions from "../../../store/actions/movieActions";
 
 import styles from "./movieInfo.module.css";
@@ -14,9 +14,30 @@ const movieInfo = (props) => {
     props.onGetActorImages(actorId);
   };
 
-  const {backdrop_path, title, overview, genres, release_date} = props.movie;
+  const { backdrop_path, title, overview, genres, release_date } = props.movie;
 
-  const {cast, crew} = props.credits;
+  const { cast, crew } = props.credits;
+
+  const { SE } = props.watchProviders.results;
+
+  let watchProvidersStream = null;
+  let watchProvidersBuy = null;
+
+  if (SE === undefined || SE.flatrate === undefined) {
+    watchProvidersStream = <span>Unavailable</span>;
+  } else {
+    watchProvidersStream = SE.flatrate.map((object) => (
+      <span key={object.provider_id}> {object.provider_name} </span>
+    ));
+  }
+
+  if (SE === undefined || SE.buy === undefined) {
+    watchProvidersBuy = <span>Unavailable</span>;
+  } else {
+    watchProvidersBuy = SE.buy.map((object) => (
+      <span key={object.provider_id}> {object.provider_name} </span>
+    ));
+  }
 
   let actors = cast.map((actor) => {
     return (
@@ -72,6 +93,14 @@ const movieInfo = (props) => {
         <div className={styles.relaesed}>
           <b>Release date: </b> {release_date}
         </div>
+        <div className={styles.watchProviders}>
+          <p>
+            <b>Can be seen on (SE):</b> {watchProvidersStream}
+          </p>
+          <p>
+            <b>Buy (SE):</b> {watchProvidersBuy}
+          </p>
+        </div>
       </div>
       <div className={styles.actors}>
         <h3>Cast</h3>
@@ -95,20 +124,21 @@ movieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
   credits: PropTypes.object.isRequired,
   loadingCredits: PropTypes.bool.isRequired,
-  loadingMovie: PropTypes.bool.isRequired
+  loadingMovie: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   movie: state.movies.movie,
   credits: state.credits.credits,
   loadingCredits: state.credits.loading,
-  loadingMovie: state.movies.loading
+  loadingMovie: state.movies.loading,
+  watchProviders: state.movies.watchProviders,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetActorDetails: (actorId) => dispatch(actions.getActorDetails(actorId)),
-    onGetActorImages: (actorId) => dispatch(actions.getActorImages(actorId))
+    onGetActorImages: (actorId) => dispatch(actions.getActorImages(actorId)),
   };
 };
 

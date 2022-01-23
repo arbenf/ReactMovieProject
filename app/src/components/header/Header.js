@@ -37,7 +37,9 @@ class Header extends Component {
               </Link>
             </li>
             <div className={styles.dropdown}>
-              <li className={styles.genres}>Movies</li>
+              <Link className={styles.link} to="/">
+                <li className={styles.genres}>Movies</li>
+              </Link>
               <div className={styles.dropdownContent}>
                 <a href="#">Popular</a>
                 <a href="#">Top 100</a>
@@ -45,7 +47,9 @@ class Header extends Component {
               </div>
             </div>
             <div className={styles.dropdown}>
-              <li className={styles.genres}>Tv Shows</li>
+              <Link className={styles.link} to="tvShows">
+                <li className={styles.genres}>Tv Shows</li>
+              </Link>
               <div className={styles.dropdownContent}>
                 <a href="#">Popular</a>
                 <a href="#">Top 100</a>

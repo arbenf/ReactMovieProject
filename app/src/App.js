@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Movies from "./components/movies/Movies";
+import TvShows from "./components/tvShows/TvShows";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MovieInfo from "./components/pages/movieInfo/MovieInfo";
@@ -15,6 +16,7 @@ class App extends Component {
         <div className={styles.App}>
           <Header />
           <Route exact path="/" component={Movies} />
+          <Route path="/tvShows" component={TvShows} />
           <Route path="/movieInfo" component={MovieInfo} />
           <Route path="/actorsInfo" component={ActorDetails} />
           <Footer />

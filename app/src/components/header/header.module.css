@@ -49,6 +49,10 @@ header ul {
   text-decoration: none;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .dropdownContent {
   display: none;
   position: absolute;

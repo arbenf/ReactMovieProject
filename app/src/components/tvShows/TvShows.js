@@ -1,4 +1,4 @@
-import { React, Component } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import TvShow from "../tvShow/tvShow";
 import * as actions from "../../store/actions/tvShowActions";

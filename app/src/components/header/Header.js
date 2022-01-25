@@ -37,7 +37,7 @@ class Header extends Component {
               </Link>
             </li>
             <div className={styles.dropdown}>
-              <Link className={styles.link} to="/">
+              <Link className={styles.link} to="/movies">
                 <li className={styles.genres}>Movies</li>
               </Link>
               <div className={styles.dropdownContent}>

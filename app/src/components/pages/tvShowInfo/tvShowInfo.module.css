@@ -1,0 +1,109 @@
+.tvShowInfoContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  /* gap: 10px; */
+  /* justify-items: center; */
+  grid-template-areas:
+    "title ."
+    "image info"
+    ". watchProviders"
+    "plot actors";
+}
+
+.image {
+  grid-area: image;
+  /* rundar hörnen */
+  border-radius: 8px;
+  justify-self: center;
+}
+
+.title {
+  grid-area: title;
+  /* margin: 100px; */
+  justify-self: center;
+}
+
+.tvShowDetails {
+  grid-area: movieDetails;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plot {
+  /* background-color: lightgrey; */
+  grid-area: plot;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.info {
+  grid-area: info;
+  padding: 10px;
+  /* background-color: lightgrey; */
+}
+
+.info > div {
+  padding: 2px;
+}
+
+.watchProviders {
+  grid-area: watchProviders;
+}
+
+.genre {
+  grid-area: genre;
+}
+
+.director {
+  grid-area: director;
+}
+
+.actors {
+  grid-area: actors;
+}
+
+.actors h3 {
+  margin-left: 40px;
+}
+
+.actors ul {
+  list-style: none;
+}
+
+.actors li {
+  display: flex;
+}
+
+.actors p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.actors div {
+  margin-top: 115px;
+}
+
+.actors img {
+  margin: 0px 10px 10px 0px;
+}
+
+.character {
+  color: #000; /* Fallback for older browsers */
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.imdbRating {
+  grid-area: imdbRating;
+}
+
+.relaesed {
+  grid-area: relaesed;
+}
+
+.loading {
+  display: grid;
+  justify-items: center;
+  padding-top: 200px;
+}

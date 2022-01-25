@@ -16,3 +16,17 @@ export const fetchTvShows = () => {
       .catch((error) => console.log(error));
   };
 };
+
+export const tvShowInfo = (id) => {
+  return (dispatch) => {
+    fetch(`${baseUrl}tv/${id}?api_key=${API_KEY}&language=en-US`)
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({
+          type: actionTypes.TVSHOW_INFO,
+          payload: data,
+        })
+      )
+      .catch((error) => console.log(error));
+  };
+};

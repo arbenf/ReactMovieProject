@@ -22,7 +22,7 @@ const tvShowReducer = (state = initialState, action) => {
         ...state,
         tvShow: { ...action.payload, genres: [...action.payload.genres] },
       };
-    case actionTypes.GET_WATCH_PROVIDERS:
+    case actionTypes.GET_TVSHOW_WATCH_PROVIDERS:
       return {
         ...state,
         watchProviders: {

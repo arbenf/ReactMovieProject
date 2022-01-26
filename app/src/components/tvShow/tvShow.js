@@ -8,6 +8,7 @@ const tvShow = (props) => {
   const passTvShowId = (id) => {
     props.onTvShowInfo(id);
     props.onCredits(id);
+    props.onWatchProviders(id);
   };
 
   const { poster_path, name, id } = props.tvShow;
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTvShowInfo: (id) => dispatch(actions.tvShowInfo(id)),
     onCredits: (id) => dispatch(actions.tvShowCredits(id)),
+    onWatchProviders: (id) => dispatch(actions.getWatchProviders(id)),
   };
 };
 

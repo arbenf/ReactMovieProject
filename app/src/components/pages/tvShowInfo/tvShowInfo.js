@@ -19,8 +19,27 @@ const tvShowInfo = (props) => {
   } = props.tvShowInfo;
 
   const { cast, crew } = props.credits;
-  console.log("TvCast: ", cast);
-  console.log("TvCrew: ", crew);
+
+  const { SE } = props.watchProviders.results;
+
+  let watchMovie = null;
+  let buyMovie = null;
+
+  if (SE === undefined || SE.flatrate === undefined) {
+    watchMovie = <span>Unavailable</span>;
+  } else {
+    watchMovie = SE.flatrate.map((object) => (
+      <span key={object.provider_id}>{object.provider_name}, </span>
+    ));
+  }
+
+  if (SE === undefined || SE.buy === undefined) {
+    buyMovie = <span>Unavailable</span>;
+  } else {
+    buyMovie = SE.buy.map((object) => (
+      <span key={object.provider_id}>{object.provider_name}, </span>
+    ));
+  }
 
   const tvShowgenres = genres.map((genre) => (
     <span key={genre.id}> {genre.name} </span>
@@ -78,14 +97,14 @@ const tvShowInfo = (props) => {
         <div className={styles.relaesed}>
           <b>Release date: </b> {first_air_date}
         </div>
-        {/* <div className={styles.watchProviders}>
+        <div className={styles.watchProviders}>
           <p>
-            <b>Can be seen on (US):</b> {watchMovie}
+            <b>Can be seen on (SE):</b> {watchMovie}
           </p>
           <p>
-            <b>Buy (US):</b> {buyMovie}
+            <b>Buy (SE):</b> {buyMovie}
           </p>
-        </div> */}
+        </div>
       </div>
       <div className={styles.actors}>
         <h3>Cast</h3>
@@ -99,6 +118,7 @@ const mapStateToProps = (state) => {
   return {
     tvShowInfo: state.tvShows.tvShow,
     credits: state.tvShowCredits.credits,
+    watchProviders: state.tvShows.watchProviders,
   };
 };
 

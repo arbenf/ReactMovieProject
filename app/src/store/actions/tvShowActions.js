@@ -46,14 +46,11 @@ export const tvShowCredits = (id) => {
 };
 
 export const getWatchProviders = (id) => (dispatch) => {
-  dispatch({
-    type: actionTypes.GET_WATCH_PROVIDERS_LOADING,
-  });
   fetch(`${BASE_URL}tv/${id}/watch/providers?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
-        type: actionTypes.GET_WATCH_PROVIDERS,
+        type: actionTypes.GET_TVSHOW_WATCH_PROVIDERS,
         payload: data,
       })
     )

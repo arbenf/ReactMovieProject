@@ -44,7 +44,7 @@ movie.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   return {
     onMovieInfo: (id) => dispatch(actions.movieInfo(id)),
-    onCredits: (id) => dispatch(actions.credits(id)),
+    onCredits: (id) => dispatch(actions.movieCredits(id)),
     onWatchProviders: (id) => dispatch(actions.getWatchProviders(id)),
   };
 };

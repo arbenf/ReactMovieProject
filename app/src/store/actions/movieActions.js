@@ -1,11 +1,11 @@
 import * as actionTypes from "./types";
 
 const API_KEY = "6a63a37017cbb2d7c209d1bdafb1f600";
-const baseUrl = "https://api.themoviedb.org/3/";
+const BASE_URL = "https://api.themoviedb.org/3/";
 
 export const fetchMovies = () => {
   return (dispatch) => {
-    fetch(`${baseUrl}trending/movie/day?api_key=${API_KEY}`)
+    fetch(`${BASE_URL}trending/movie/day?api_key=${API_KEY}`)
       .then((response) => response.json())
       .then((data) =>
         dispatch({
@@ -20,7 +20,7 @@ export const fetchMovies = () => {
 export const searchMovie = (title) => (dispatch) => {
   console.log("searchTitle inside Redux: ", title);
   fetch(
-    `${baseUrl}search/movie?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
   )
     .then((response) => response.json())
     .then((data) =>
@@ -36,7 +36,7 @@ export const movieInfo = (id) => (dispatch) => {
   dispatch({
     type: actionTypes.MOVIEINFO_LOADING,
   });
-  fetch(`${baseUrl}movie/${id}?api_key=${API_KEY}&language=en-US`)
+  fetch(`${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -47,11 +47,11 @@ export const movieInfo = (id) => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const credits = (id) => (dispatch) => {
+export const movieCredits = (id) => (dispatch) => {
   dispatch({
     type: actionTypes.CREDITS_LOADING,
   });
-  fetch(`${baseUrl}movie/${id}/credits?api_key=${API_KEY}`)
+  fetch(`${BASE_URL}movie/${id}/credits?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -65,7 +65,7 @@ export const getActorDetails = (actorId) => (dispatch) => {
   dispatch({
     type: actionTypes.ACTOR_DETAILS_LOADING,
   });
-  fetch(`${baseUrl}person/${actorId}?api_key=${API_KEY}`)
+  fetch(`${BASE_URL}person/${actorId}?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -79,7 +79,7 @@ export const getActorImages = (actorId) => (dispatch) => {
   dispatch({
     type: actionTypes.IMAGES_LOADING,
   });
-  fetch(`${baseUrl}person/${actorId}/images?api_key=${API_KEY}`)
+  fetch(`${BASE_URL}person/${actorId}/images?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -90,7 +90,10 @@ export const getActorImages = (actorId) => (dispatch) => {
 };
 
 export const getWatchProviders = (movieId) => (dispatch) => {
-  fetch(`${baseUrl}movie/${movieId}/watch/providers?api_key=${API_KEY}`)
+  dispatch({
+    type: actionTypes.GET_WATCH_PROVIDERS_LOADING,
+  });
+  fetch(`${BASE_URL}movie/${movieId}/watch/providers?api_key=${API_KEY}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({

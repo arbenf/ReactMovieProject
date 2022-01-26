@@ -20,22 +20,22 @@ const movieInfo = (props) => {
 
   const { SE } = props.watchProviders.results;
 
-  let watchProvidersStream = null;
-  let watchProvidersBuy = null;
+  let watchMovie = null;
+  let buyMovie = null;
 
   if (SE === undefined || SE.flatrate === undefined) {
-    watchProvidersStream = <span>Unavailable</span>;
+    watchMovie = <span>Unavailable</span>;
   } else {
-    watchProvidersStream = SE.flatrate.map((object) => (
-      <span key={object.provider_id}> {object.provider_name} </span>
+    watchMovie = SE.flatrate.map((object) => (
+      <span key={object.provider_id}>{object.provider_name}, </span>
     ));
   }
 
   if (SE === undefined || SE.buy === undefined) {
-    watchProvidersBuy = <span>Unavailable</span>;
+    buyMovie = <span>Unavailable</span>;
   } else {
-    watchProvidersBuy = SE.buy.map((object) => (
-      <span key={object.provider_id}> {object.provider_name} </span>
+    buyMovie = SE.buy.map((object) => (
+      <span key={object.provider_id}>{object.provider_name}, </span>
     ));
   }
 
@@ -57,6 +57,10 @@ const movieInfo = (props) => {
       </li>
     );
   });
+
+  let director = crew
+    .filter((c) => c.department === "Directing")
+    .map((c) => <span key={c.id}>{c.name}</span>);
 
   let movieInfo = (
     <div className={styles.movieInfoContainer}>
@@ -82,11 +86,7 @@ const movieInfo = (props) => {
         </div>
         <div className={styles.director}>
           <b>Director: </b>
-          {crew
-            .filter((c) => c.department === "Directing")
-            .map((c) => (
-              <span key={c.id}>{c.name}</span>
-            ))}
+          {director}
         </div>
 
         {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
@@ -95,10 +95,10 @@ const movieInfo = (props) => {
         </div>
         <div className={styles.watchProviders}>
           <p>
-            <b>Can be seen on (SE):</b> {watchProvidersStream}
+            <b>Can be seen on (SE):</b> {watchMovie}
           </p>
           <p>
-            <b>Buy (SE):</b> {watchProvidersBuy}
+            <b>Buy (SE):</b> {buyMovie}
           </p>
         </div>
       </div>
@@ -116,7 +116,6 @@ const movieInfo = (props) => {
       </div>
     );
   }
-
   return movieInfo;
 };
 
@@ -129,8 +128,8 @@ movieInfo.propTypes = {
 
 const mapStateToProps = (state) => ({
   movie: state.movies.movie,
-  credits: state.credits.credits,
-  loadingCredits: state.credits.loading,
+  credits: state.movieCredits.credits,
+  loadingCredits: state.movieCredits.loading,
   loadingMovie: state.movies.loading,
   watchProviders: state.movies.watchProviders,
 });

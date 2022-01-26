@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
+import * as actions from "../../../store/actions/movieActions";
 import styles from "./tvShowInfo.module.css";
 
 const tvShowInfo = (props) => {
+  const passActorId = (actorId) => {
+    props.onGetActorDetails(actorId);
+    props.onGetActorImages(actorId);
+  };
+
   const {
     backdrop_path,
     name,
@@ -12,9 +18,36 @@ const tvShowInfo = (props) => {
     genres,
   } = props.tvShowInfo;
 
+  const { cast, crew } = props.credits;
+  console.log("TvCast: ", cast);
+  console.log("TvCrew: ", crew);
+
   const tvShowgenres = genres.map((genre) => (
     <span key={genre.id}> {genre.name} </span>
   ));
+
+  let actors = cast.map((actor) => {
+    return (
+      <li key={actor.id} onClick={() => passActorId(actor.id)}>
+        <Link to="/actorsInfo">
+          <img
+            src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
+            width="100"
+            height="150"
+            alt="profile_image"
+          />
+        </Link>
+        <div>
+          <p>{actor.original_name}</p>
+          <p className={styles.character}>{actor.character}</p>
+        </div>
+      </li>
+    );
+  });
+
+  let director = crew
+    .filter((c) => c.known_for_department === "Directing")
+    .map((c) => <span key={c.id}>{c.name}</span>);
 
   return (
     <div className={styles.tvShowInfoContainer}>
@@ -36,14 +69,10 @@ const tvShowInfo = (props) => {
           <b>Genre:</b>
           {tvShowgenres}
         </div>
-        {/* <div className={styles.director}>
+        <div className={styles.director}>
           <b>Director: </b>
-          {crew
-            .filter((c) => c.department === "Directing")
-            .map((c) => (
-              <span key={c.id}>{c.name}</span>
-            ))}
-        </div> */}
+          {director}
+        </div>
 
         {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
         <div className={styles.relaesed}>
@@ -58,10 +87,10 @@ const tvShowInfo = (props) => {
           </p>
         </div> */}
       </div>
-      {/* <div className={styles.actors}>
+      <div className={styles.actors}>
         <h3>Cast</h3>
         <ul>{actors}</ul>
-      </div> */}
+      </div>
     </div>
   );
 };
@@ -69,6 +98,15 @@ const tvShowInfo = (props) => {
 const mapStateToProps = (state) => {
   return {
     tvShowInfo: state.tvShows.tvShow,
+    credits: state.tvShowCredits.credits,
   };
 };
-export default connect(mapStateToProps)(tvShowInfo);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetActorDetails: (actorId) => dispatch(actions.getActorDetails(actorId)),
+    onGetActorImages: (actorId) => dispatch(actions.getActorImages(actorId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(tvShowInfo);

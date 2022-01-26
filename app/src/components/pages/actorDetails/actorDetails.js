@@ -87,10 +87,10 @@ const actorDetails = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    actorDetails: state.credits.actorDetails,
-    actorImages: state.credits.actorImages,
-    loadingActorDetails: state.credits.loading,
-    loadingImages: state.credits.loading,
+    actorDetails: state.movieCredits.actorDetails,
+    actorImages: state.movieCredits.actorImages,
+    loadingActorDetails: state.movieCredits.loading,
+    loadingImages: state.movieCredits.loading,
   };
 };
 

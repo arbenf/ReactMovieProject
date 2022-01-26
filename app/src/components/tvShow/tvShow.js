@@ -6,8 +6,8 @@ import styles from "./tvShow.module.css";
 
 const tvShow = (props) => {
   const passTvShowId = (id) => {
-    console.log("tvShowId: ", id);
     props.onTvShowInfo(id);
+    props.onCredits(id);
   };
 
   const { poster_path, name, id } = props.tvShow;
@@ -35,6 +35,7 @@ const tvShow = (props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onTvShowInfo: (id) => dispatch(actions.tvShowInfo(id)),
+    onCredits: (id) => dispatch(actions.tvShowCredits(id)),
   };
 };
 

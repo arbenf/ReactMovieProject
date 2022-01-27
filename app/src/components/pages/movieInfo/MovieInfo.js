@@ -4,7 +4,7 @@ import Loading from "../../../components/loading/Loading";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
-import * as actions from "../../../store/actions/movieActions";
+import * as actions from "../../../store/actions/personActions";
 
 import styles from "./movieInfo.module.css";
 

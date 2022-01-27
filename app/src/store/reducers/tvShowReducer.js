@@ -8,6 +8,7 @@ const initialState = {
   watchProviders: {
     results: {},
   },
+  loading: false,
 };
 
 const tvShowReducer = (state = initialState, action) => {
@@ -17,10 +18,21 @@ const tvShowReducer = (state = initialState, action) => {
         ...state,
         tvShows: [...action.payload],
       };
+    case actionTypes.SEARCH_TVSHOW:
+      return {
+        ...state,
+        tvShows: [...action.payload],
+      };
+    case actionTypes.TVSHOW_INFO_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
     case actionTypes.TVSHOW_INFO:
       return {
         ...state,
         tvShow: { ...action.payload, genres: [...action.payload.genres] },
+        loading: false,
       };
     case actionTypes.GET_TVSHOW_WATCH_PROVIDERS:
       return {

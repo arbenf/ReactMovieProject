@@ -17,32 +17,49 @@ export const fetchTvShows = () => {
   };
 };
 
-export const tvShowInfo = (id) => {
-  return (dispatch) => {
-    fetch(`${BASE_URL}tv/${id}?api_key=${API_KEY}&language=en-US`)
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({
-          type: actionTypes.TVSHOW_INFO,
-          payload: data,
-        })
-      )
-      .catch((error) => console.log(error));
-  };
+export const tvShowInfo = (id) => (dispatch) => {
+  dispatch({
+    type: actionTypes.TVSHOW_INFO_LOADING,
+  });
+  fetch(`${BASE_URL}tv/${id}?api_key=${API_KEY}&language=en-US`)
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.TVSHOW_INFO,
+        payload: data,
+      })
+    )
+    .catch((error) => console.log(error));
 };
 
-export const tvShowCredits = (id) => {
-  return (dispatch) => {
-    fetch(`${BASE_URL}tv/${id}/credits?api_key=${API_KEY}&language=en-US`)
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({
-          type: actionTypes.TV_CREDITS,
-          payload: data,
-        })
-      )
-      .catch((error) => console.log(error));
-  };
+export const searchTvShow = (title) => (dispatch) => {
+  console.log("searchTitle inside Redux: ", title);
+  fetch(
+    `${BASE_URL}search/tv?api_key=${API_KEY}&language=en-US&query=${title}&page=1&include_adult=false`
+  )
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.SEARCH_TVSHOW,
+        payload: data.results,
+      })
+    )
+    .catch((error) => console.log(error));
+};
+
+export const tvShowCredits = (id) => (dispatch) => {
+  dispatch({
+    type: actionTypes.TV_CREDITS_LOADING,
+  });
+  fetch(`${BASE_URL}tv/${id}/credits?api_key=${API_KEY}&language=en-US`)
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.TV_CREDITS,
+        payload: data,
+      })
+    )
+    .catch((error) => console.log(error));
 };
 
 export const getWatchProviders = (id) => (dispatch) => {

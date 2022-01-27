@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import * as actions from "../../../store/actions/movieActions";
+import * as actions from "../../../store/actions/personActions";
+import Loading from "../../loading/Loading";
 import styles from "./tvShowInfo.module.css";
 
 const tvShowInfo = (props) => {
@@ -68,7 +69,7 @@ const tvShowInfo = (props) => {
     .filter((c) => c.known_for_department === "Directing")
     .map((c) => <span key={c.id}>{c.name}</span>);
 
-  return (
+  let tvShowInfo = (
     <div className={styles.tvShowInfoContainer}>
       <img
         className={styles.image}
@@ -112,6 +113,15 @@ const tvShowInfo = (props) => {
       </div>
     </div>
   );
+
+  if (props.tvShowInfoLoading && props.creditsLoading) {
+    tvShowInfo = (
+      <div className={styles.loading}>
+        <Loading />
+      </div>
+    );
+  }
+  return tvShowInfo;
 };
 
 const mapStateToProps = (state) => {
@@ -119,6 +129,8 @@ const mapStateToProps = (state) => {
     tvShowInfo: state.tvShows.tvShow,
     credits: state.tvShowCredits.credits,
     watchProviders: state.tvShows.watchProviders,
+    tvShowInfoLoading: state.tvShows.loading,
+    creditsLoading: state.tvShowCredits.loading,
   };
 };
 

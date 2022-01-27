@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { searchMovie } from "../../store/actions/movieActions";
+import * as movieActions from "../../store/actions/movieActions";
+import * as tvShowActions from "../../store/actions/tvShowActions";
 
 import styles from "./search.module.css";
 
@@ -14,7 +15,8 @@ class Search extends Component {
   handleClick = (event) => {
     console.log("handleClick", this.state.title);
     event.preventDefault();
-    this.props.searchMovie(this.state.title);
+    this.props.onSearchMovie(this.state.title);
+    this.props.onSearchTvShow(this.state.title);
     this.setState({ title: "" });
   };
 
@@ -30,7 +32,7 @@ class Search extends Component {
         <input
           type="text"
           placeholder="Enter title"
-          value={this.state.title}
+          // value={this.state.title}
           onChange={this.handleInput}
         />
         {/* <Link to="/"> */}
@@ -45,4 +47,13 @@ Search.propTypes = {
   searchMovie: PropTypes.func.isRequired,
 };
 
-export default connect(null, { searchMovie })(Search);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchMovie: (movieTitle) =>
+      dispatch(movieActions.searchMovie(movieTitle)),
+    onSearchTvShow: (movieTitle) =>
+      dispatch(tvShowActions.searchTvShow(movieTitle)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Search);

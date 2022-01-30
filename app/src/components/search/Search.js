@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 import * as movieActions from "../../store/actions/movieActions";
@@ -18,6 +18,7 @@ class Search extends Component {
     this.props.onSearchMovie(this.state.title);
     this.props.onSearchTvShow(this.state.title);
     this.setState({ title: "" });
+    this.props.history.push("/searchResults");
   };
 
   handleInput = (event) => {
@@ -35,9 +36,7 @@ class Search extends Component {
           // value={this.state.title}
           onChange={this.handleInput}
         />
-        {/* <Link to="/"> */}
         <input type="submit" value="Search" />
-        {/* </Link> */}
       </form>
     );
   }
@@ -56,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(null, mapDispatchToProps)(withRouter(Search));

@@ -1,0 +1,17 @@
+.searchResults {
+  display: grid;
+  /* fr står för fraction. använd fr istället för % */
+  /* grid-template-columns: 1fr 2fr 1fr; */
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 100px;
+
+  /* Både column och row */
+  /* grid-gap: 1em; */
+
+  /* sätter hight */
+  /* grid-auto-rows: 1000px */
+
+  /* minst 100px hight men expanderar om det behövs */
+  grid-auto-rows: minmax(100px, auto);
+}

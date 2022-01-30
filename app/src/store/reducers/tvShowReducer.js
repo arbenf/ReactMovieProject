@@ -5,6 +5,7 @@ const initialState = {
   tvShow: {
     genres: [],
   },
+  tvShowSearch: [],
   watchProviders: {
     results: {},
   },
@@ -21,7 +22,7 @@ const tvShowReducer = (state = initialState, action) => {
     case actionTypes.SEARCH_TVSHOW:
       return {
         ...state,
-        tvShows: [...action.payload],
+        tvShowSearch: [...action.payload],
       };
     case actionTypes.TVSHOW_INFO_LOADING:
       return {

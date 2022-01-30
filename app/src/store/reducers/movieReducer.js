@@ -5,6 +5,7 @@ const initialState = {
   movie: {
     genres: [],
   },
+  movieSearch: [],
   watchProviders: {
     results: {},
   },
@@ -21,7 +22,7 @@ const movieReducer = (state = initialState, action) => {
     case actionTypes.SEARCH_MOVIE:
       return {
         ...state,
-        movies: [...action.payload],
+        movieSearch: [...action.payload],
       };
     case actionTypes.MOVIEINFO_LOADING:
       return {

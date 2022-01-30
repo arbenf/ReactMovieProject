@@ -119,13 +119,6 @@ const movieInfo = (props) => {
   return movieInfo;
 };
 
-movieInfo.propTypes = {
-  movie: PropTypes.object.isRequired,
-  credits: PropTypes.object.isRequired,
-  loadingCredits: PropTypes.bool.isRequired,
-  loadingMovie: PropTypes.bool.isRequired,
-};
-
 const mapStateToProps = (state) => ({
   movie: state.movies.movie,
   credits: state.movieCredits.credits,
@@ -139,6 +132,16 @@ const mapDispatchToProps = (dispatch) => {
     onGetActorDetails: (actorId) => dispatch(actions.getActorDetails(actorId)),
     onGetActorImages: (actorId) => dispatch(actions.getActorImages(actorId)),
   };
+};
+
+movieInfo.propTypes = {
+  movie: PropTypes.object.isRequired,
+  credits: PropTypes.object.isRequired,
+  loadingCredits: PropTypes.bool.isRequired,
+  loadingMovie: PropTypes.bool.isRequired,
+  watchProviders: PropTypes.object.isRequired,
+  onGetActorDetails: PropTypes.func.isRequired,
+  onGetActorImages: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(movieInfo);

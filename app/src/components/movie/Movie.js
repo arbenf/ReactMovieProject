@@ -36,17 +36,18 @@ const movie = (props) => {
   );
 };
 
-movie.propTypes = {
-  onMovieInfo: PropTypes.func.isRequired,
-  onCredits: PropTypes.func.isRequired,
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onMovieInfo: (id) => dispatch(actions.movieInfo(id)),
     onCredits: (id) => dispatch(actions.movieCredits(id)),
     onWatchProviders: (id) => dispatch(actions.getWatchProviders(id)),
   };
+};
+
+movie.propTypes = {
+  onMovieInfo: PropTypes.func.isRequired,
+  onCredits: PropTypes.func.isRequired,
+  onWatchProviders: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(movie);

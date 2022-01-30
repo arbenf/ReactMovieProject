@@ -23,7 +23,6 @@ class App extends Component {
           <Route path="/movieInfo" component={MovieInfo} />
           <Route path="/tvShowInfo" component={TvShowInfo} />
           <Route path="/actorsInfo" component={ActorDetails} />
-
           <Footer />
         </div>
       </Router>

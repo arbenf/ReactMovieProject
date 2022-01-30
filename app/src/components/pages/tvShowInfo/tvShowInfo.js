@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import * as actions from "../../../store/actions/personActions";
 import Loading from "../../loading/Loading";
 import styles from "./tvShowInfo.module.css";
@@ -139,6 +140,16 @@ const mapDispatchToProps = (dispatch) => {
     onGetActorDetails: (actorId) => dispatch(actions.getActorDetails(actorId)),
     onGetActorImages: (actorId) => dispatch(actions.getActorImages(actorId)),
   };
+};
+
+tvShowInfo.propTypes = {
+  tvShowInfo: PropTypes.object.isRequired,
+  credits: PropTypes.object.isRequired,
+  watchProviders: PropTypes.object.isRequired,
+  tvShowInfoLoading: PropTypes.bool.isRequired,
+  creditsLoading: PropTypes.bool.isRequired,
+  onGetActorDetails: PropTypes.func.isRequired,
+  onGetActorImages: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(tvShowInfo);

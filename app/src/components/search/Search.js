@@ -42,10 +42,6 @@ class Search extends Component {
   }
 }
 
-Search.propTypes = {
-  searchMovie: PropTypes.func.isRequired,
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchMovie: (movieTitle) =>
@@ -53,6 +49,11 @@ const mapDispatchToProps = (dispatch) => {
     onSearchTvShow: (movieTitle) =>
       dispatch(tvShowActions.searchTvShow(movieTitle)),
   };
+};
+
+Search.propTypes = {
+  onSearchMovie: PropTypes.func.isRequired,
+  onSearchTvShow: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(withRouter(Search));

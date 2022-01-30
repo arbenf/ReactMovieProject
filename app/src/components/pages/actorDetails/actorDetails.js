@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Loading from "../../../components/loading/Loading";
 
 import { connect } from "react-redux";
@@ -92,6 +93,13 @@ const mapStateToProps = (state) => {
     loadingActorDetails: state.persons.loading,
     loadingImages: state.persons.loading,
   };
+};
+
+actorDetails.propTypes = {
+  actorDetails: PropTypes.object.isRequired,
+  actorImages: PropTypes.array.isRequired,
+  loadingActorDetails: PropTypes.bool.isRequired,
+  loadingImages: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(actorDetails);

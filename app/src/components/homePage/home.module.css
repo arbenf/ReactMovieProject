@@ -1,0 +1,30 @@
+.homeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.homeInput {
+  height: 40px;
+  width: 500px;
+  border: 2px solid rgb(207, 205, 205);
+  border-radius: 20px;
+  font-size: 25px;
+  font-weight: 100;
+  /* background-color: rgb(235, 229, 229); */
+  outline: none;
+  text-indent: 10px;
+  color: darkgray;
+}
+
+.homeInput::-webkit-input-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}
+.infoPlaceholder::-moz-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}
+.infoPlaceholder::-ms-input-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}

@@ -57,7 +57,7 @@ class Header extends Component {
               </div>
             </div>
             <li className={styles.fourth}>
-              <Search />
+              <Search styles={styles.headerInput} />
             </li>
           </ul>
         </nav>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Home from "./components/homePage/home";
 import Movies from "./components/movies/Movies";
 import TvShows from "./components/tvShows/TvShows";
 import Header from "./components/header/Header";
@@ -17,6 +18,7 @@ class App extends Component {
       <Router>
         <div className={styles.App}>
           <Header />
+          <Route exact path="/" component={Home} />
           <Route exact path="/movies" component={Movies} />
           <Route path="/searchResults" component={SearchResults} />
           <Route path="/tvShows" component={TvShows} />

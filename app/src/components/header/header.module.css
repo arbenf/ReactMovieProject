@@ -83,3 +83,29 @@ header ul {
 .dropdown:hover .genres {
   background-color: #f9f9f9;
 }
+
+.headerInput {
+  height: 25px;
+  width: 250px;
+  border: 2px solid rgb(207, 205, 205);
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 100;
+  /* background-color: rgb(235, 229, 229); */
+  outline: none;
+  text-indent: 10px;
+  color: darkgray;
+}
+
+.headerInput::-webkit-input-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}
+.headerInput::-moz-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}
+.headerInput::-ms-input-placeholder {
+  font-weight: lighter;
+  color: #d7dcdd;
+}

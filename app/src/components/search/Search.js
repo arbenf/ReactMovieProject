@@ -31,12 +31,13 @@ class Search extends Component {
     return (
       <form className={styles.searchForm} onSubmit={this.handleClick}>
         <input
+          className={this.props.styles}
           type="text"
           placeholder="Enter title"
           // value={this.state.title}
           onChange={this.handleInput}
         />
-        <input type="submit" value="Search" />
+        {/* <input type="submit" value="Search" /> */}
       </form>
     );
   }

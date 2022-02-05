@@ -5,6 +5,9 @@ const initialState = {
   movie: {
     genres: [],
   },
+  upComingMovies: {
+    results: [],
+  },
   movieSearch: [],
   watchProviders: {
     results: {},
@@ -18,6 +21,14 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         movies: [...action.payload],
+      };
+    case actionTypes.GET_UPCOMING_MOVIES:
+      return {
+        ...state,
+        upComingMovies: {
+          ...action.payload,
+          results: [...action.payload.results],
+        },
       };
     case actionTypes.SEARCH_MOVIE:
       return {

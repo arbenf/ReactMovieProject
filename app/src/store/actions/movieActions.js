@@ -17,6 +17,19 @@ export const fetchMovies = () => {
   };
 };
 
+export const getUpcomingMovies = () => (dispatch) => {
+  fetch(
+    `${BASE_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=1&region=SE`
+  )
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.GET_UPCOMING_MOVIES,
+        payload: data,
+      })
+    );
+};
+
 export const searchMovie = (title) => (dispatch) => {
   console.log("searchTitle inside Redux: ", title);
   fetch(

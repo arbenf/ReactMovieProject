@@ -17,7 +17,7 @@ class Search extends Component {
     event.preventDefault();
     this.props.onSearchMovie(this.state.title);
     this.props.onSearchTvShow(this.state.title);
-    this.setState({ title: "" });
+    // this.setState({ title: "" });
     this.props.history.push("/searchResults");
   };
 
@@ -27,14 +27,19 @@ class Search extends Component {
     // console.log("Search handleInput".this.state.title);
   };
 
+  // deleteInput = () => {
+  //   console.log("Input deleted!!!");
+  //   this.setState({ title: "" });
+  // };
+
   render() {
     return (
       <form className={styles.searchForm} onSubmit={this.handleClick}>
         <input
           className={this.props.styles}
-          type="text"
+          type="search"
           placeholder="Enter title"
-          // value={this.state.title}
+          value={this.state.title}
           onChange={this.handleInput}
         />
         {/* <input type="submit" value="Search" /> */}

@@ -1,6 +1,6 @@
 .movie {
   /* background-color: grey; */
-  display: grid;
+  /* display: grid; */
   /* grid-template-columns: 1fr 1fr; */
   /* grid-template-columns: repeat(2, 1fr); */
   /* grid-column-gap: 30px; */
@@ -8,16 +8,16 @@
 "aa";
 
 align-items: center; */
-  justify-items: center;
-  text-decoration: none;
+  /* justify-items: center;
+  text-decoration: none; */
   margin-right: 20px;
 }
 
-.movieContainer {
+/* .movieContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .movieLink {
   color: black;

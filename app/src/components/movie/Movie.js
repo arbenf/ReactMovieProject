@@ -17,7 +17,7 @@ const movie = (props) => {
   const { poster_path, title, id } = props.movie;
 
   return (
-    <div className={styles.movie}>
+    <div className={props.styles}>
       <Link
         to="/movieInfo"
         className={styles.movieLink}

@@ -1,12 +1,42 @@
 .scrollMovieContainer {
   margin-top: 100px;
-  width: 1000px;
+  /* width: 1000px; */
 }
 
 .scrollMovies {
+  width: 1000px;
+  height: 350px;
   display: flex;
-  overflow: auto;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
   white-space: nowrap;
+}
+
+.scrollMovies button {
+  z-index: 1;
+  cursor: pointer;
+  opacity: 60%;
+  font-weight: 900;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+}
+
+.moviesContainer {
+  width: 3700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  transition: 0.5s all ease-out;
+}
+
+.movie {
+  margin-right: 20px;
+  background-color: rgb(238, 227, 227);
+  border-radius: 10px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

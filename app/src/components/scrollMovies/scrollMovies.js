@@ -5,39 +5,43 @@ import Movie from "../movie/Movie";
 import * as actions from "../../store/actions/movieActions";
 import styles from "./scrollMovies.module.css";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faFontAwesome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+library.add(fas, faFontAwesome);
+
 class ScrollMovies extends Component {
   state = {
     srollMoviesWidth: null,
     moviesContainerWidth: null,
     scrollPosition: 0,
-    scrollAmount: 600,
+    scrollAmount: 1300,
   };
 
-  constructor(props) {
-    super(props);
-    this.scrollMoviesWidth = React.createRef();
-    this.moviesContainerWidth = React.createRef();
-  }
+  scrollMoviesWidth = React.createRef();
+  moviesContainerWidth = React.createRef();
 
   componentDidMount() {
     this.props.onGetUpcomingMovies();
+    console.log("componentDidMount");
+  }
+
+  componentDidUpdate(prevProps) {
     let srollMoviesWidth = this.scrollMoviesWidth.current.offsetWidth;
     let moviesContainerWidth = this.moviesContainerWidth.current.offsetWidth;
-    this.setState({
-      srollMoviesWidth,
-      moviesContainerWidth,
-    });
+    if (this.props.upComingMovies !== prevProps.upComingMovies) {
+      this.setState({ srollMoviesWidth, moviesContainerWidth });
+    }
+    console.log("componentDidUpdate");
   }
 
   scrollMovies = (val) => {
-    console.log("scrollMoviesWidth", this.state.srollMoviesWidth);
-    console.log("moviesContainerWidth", this.state.moviesContainerWidth);
     let maxScroll =
       -this.state.moviesContainerWidth + this.state.srollMoviesWidth;
     let scrollPosition = this.state.scrollPosition;
-    console.log("before: ", scrollPosition);
     scrollPosition += val * this.state.scrollAmount;
-    console.log("after: ", scrollPosition);
 
     if (scrollPosition > 0) {
       scrollPosition = 0;
@@ -56,12 +60,15 @@ class ScrollMovies extends Component {
         <h2>Upcoming</h2>
         <div className={styles.scrollMovies} ref={this.scrollMoviesWidth}>
           <button onClick={() => this.scrollMovies(1)}>
-            left
-            {/* <i className="fas fa-chevron-left"></i> */}
+            <FontAwesomeIcon icon="fa-solid fa-angle-left" size="2x" />
           </button>
-          <button onClick={() => this.scrollMovies(-1)}>Right</button>
+          <button onClick={() => this.scrollMovies(-1)}>
+            <FontAwesomeIcon icon="fa-solid fa-angle-right" size="2x" />
+          </button>
           <div
-            style={{ left: this.state.scrollPosition }}
+            style={{
+              left: this.state.scrollPosition,
+            }}
             className={styles.moviesContainer}
             ref={this.moviesContainerWidth}
           >

@@ -4,14 +4,14 @@
 }
 
 .scrollMovies {
-  width: 1000px;
+  width: 1100px;
   height: 350px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 .scrollMovies button {
@@ -25,15 +25,16 @@
 }
 
 .moviesContainer {
-  width: 3700px;
+  /* width: 3080px; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   position: absolute;
   transition: 0.5s all ease-out;
 }
 
 .movie {
+  width: 200px;
   margin-right: 20px;
   background-color: rgb(238, 227, 227);
   border-radius: 10px;

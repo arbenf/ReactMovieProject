@@ -6,8 +6,7 @@ import * as actions from "../../store/actions/movieActions";
 import styles from "./scrollMovies.module.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { faFontAwesome } from "@fortawesome/free-solid-svg-icons";
+import { fas, faFontAwesome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 library.add(fas, faFontAwesome);
@@ -17,7 +16,9 @@ class ScrollMovies extends Component {
     srollMoviesWidth: null,
     moviesContainerWidth: null,
     scrollPosition: 0,
-    scrollAmount: 1300,
+    scrollAmount: 1100,
+    buttonOpacityLeft: "60%",
+    buttonOpacityRight: "60%",
   };
 
   scrollMoviesWidth = React.createRef();
@@ -42,16 +43,24 @@ class ScrollMovies extends Component {
       -this.state.moviesContainerWidth + this.state.srollMoviesWidth;
     let scrollPosition = this.state.scrollPosition;
     scrollPosition += val * this.state.scrollAmount;
+    let buttonOpacityLeft = this.state.buttonOpacityLeft;
+    let buttonOpacityRight = this.state.buttonOpacityRight;
 
     if (scrollPosition > 0) {
       scrollPosition = 0;
+      buttonOpacityLeft = "0%";
+    } else {
+      buttonOpacityLeft = "60%";
     }
 
     if (scrollPosition < maxScroll) {
       scrollPosition = maxScroll;
+      buttonOpacityRight = "0%";
+    } else {
+      buttonOpacityRight = "60%";
     }
 
-    this.setState({ scrollPosition });
+    this.setState({ scrollPosition, buttonOpacityLeft, buttonOpacityRight });
   };
 
   render() {
@@ -59,10 +68,16 @@ class ScrollMovies extends Component {
       <div className={styles.scrollMovieContainer}>
         <h2>Upcoming</h2>
         <div className={styles.scrollMovies} ref={this.scrollMoviesWidth}>
-          <button onClick={() => this.scrollMovies(1)}>
+          <button
+            style={{ opacity: this.state.buttonOpacityLeft }}
+            onClick={() => this.scrollMovies(1)}
+          >
             <FontAwesomeIcon icon="fa-solid fa-angle-left" size="2x" />
           </button>
-          <button onClick={() => this.scrollMovies(-1)}>
+          <button
+            style={{ opacity: this.state.buttonOpacityRight }}
+            onClick={() => this.scrollMovies(-1)}
+          >
             <FontAwesomeIcon icon="fa-solid fa-angle-right" size="2x" />
           </button>
           <div

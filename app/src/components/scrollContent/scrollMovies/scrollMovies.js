@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Movie from "../movie/Movie";
-import * as actions from "../../store/actions/movieActions";
+import Movie from "../../movie/Movie";
 import styles from "./scrollMovies.module.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -25,14 +23,14 @@ class ScrollMovies extends Component {
   moviesContainerWidth = React.createRef();
 
   componentDidMount() {
-    this.props.onGetUpcomingMovies();
+    this.props.data();
     console.log("componentDidMount");
   }
 
   componentDidUpdate(prevProps) {
     let srollMoviesWidth = this.scrollMoviesWidth.current.offsetWidth;
     let moviesContainerWidth = this.moviesContainerWidth.current.offsetWidth;
-    if (this.props.upComingMovies !== prevProps.upComingMovies) {
+    if (this.props.movies !== prevProps.movies) {
       this.setState({ srollMoviesWidth, moviesContainerWidth });
     }
     console.log("componentDidUpdate");
@@ -66,7 +64,7 @@ class ScrollMovies extends Component {
   render() {
     return (
       <div className={styles.scrollMovieContainer}>
-        <h2>Upcoming</h2>
+        <h2>{this.props.title}</h2>
         <div className={styles.scrollMovies} ref={this.scrollMoviesWidth}>
           <button
             style={{ opacity: this.state.buttonOpacityLeft }}
@@ -87,7 +85,7 @@ class ScrollMovies extends Component {
             className={styles.moviesContainer}
             ref={this.moviesContainerWidth}
           >
-            {this.props.upComingMovies.results.map((movie) => (
+            {this.props.movies.results.map((movie) => (
               <Movie
                 styles={styles.movie}
                 key={movie.id}
@@ -103,19 +101,9 @@ class ScrollMovies extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { upComingMovies: state.movies.upComingMovies };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onGetUpcomingMovies: () => dispatch(actions.getUpcomingMovies()),
-  };
-};
-
 ScrollMovies.propTypes = {
-  upComingMovies: PropTypes.object.isRequired,
-  onGetUpcomingMovies: PropTypes.func.isRequired,
+  movies: PropTypes.object.isRequired,
+  data: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScrollMovies);
+export default ScrollMovies;

@@ -30,6 +30,19 @@ export const getUpcomingMovies = () => (dispatch) => {
     );
 };
 
+export const getNowPlayingMovies = () => (dispatch) => {
+  fetch(
+    `${BASE_URL}movie/now_playing?api_key=${API_KEY}&language=en-US&page=1&region=SE`
+  )
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.GET_NOW_PLAYING_MOVIES,
+        payload: data,
+      })
+    );
+};
+
 export const searchMovie = (title) => (dispatch) => {
   console.log("searchTitle inside Redux: ", title);
   fetch(

@@ -1,8 +1,7 @@
 import React from "react";
 import Search from "../search/Search";
-import ScrollMoives from "../scrollMovies/scrollMovies";
+import ScrollContent from "../scrollContent/scrollContent";
 import styles from "./home.module.css";
-import InputSearchHome from "../search/searchResults";
 
 const home = (props) => {
   console.log("styles: ", styles);
@@ -10,7 +9,7 @@ const home = (props) => {
     <div className={styles.homeContainer}>
       <div className={styles.homeContent}>
         <Search styles={styles.homeInput} />
-        <ScrollMoives />
+        <ScrollContent />
       </div>
     </div>
   );

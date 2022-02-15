@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import * as actions from "../../store/actions/movieActions";
 import ScrollMovies from "./scrollMovies/scrollMovies";
 
@@ -32,6 +33,13 @@ const mapDispatchToProps = (dispatch) => {
     onGetUpcomingMovies: () => dispatch(actions.getUpcomingMovies()),
     onGetNowPlayingMovies: () => dispatch(actions.getNowPlayingMovies()),
   };
+};
+
+scrollContent.propTypes = {
+  upComingMovies: PropTypes.object.isRequired,
+  nowPlayingMovies: PropTypes.object.isRequired,
+  onGetUpcomingMovies: PropTypes.func.isRequired,
+  onGetNowPlayingMovies: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(scrollContent);

@@ -15,7 +15,12 @@ class TvShows extends Component {
     return (
       <div className={styles.tvShows}>
         {this.props.tvShows.map((tvShow) => (
-          <TvShow tvShow={tvShow} key={tvShow.id} />
+          <TvShow
+            content={tvShow}
+            key={tvShow.id}
+            width={"400"}
+            height={"550"}
+          />
         ))}
       </div>
     );

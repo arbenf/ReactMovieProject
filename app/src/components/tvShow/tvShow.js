@@ -12,10 +12,10 @@ const tvShow = (props) => {
     props.onWatchProviders(id);
   };
 
-  const { poster_path, name, id } = props.tvShow;
+  const { poster_path, name, id } = props.content;
 
   return (
-    <div className={styles.tvShow}>
+    <div className={props.styles}>
       <Link
         to="tvShowInfo"
         className={styles.tvShowLink}
@@ -24,8 +24,8 @@ const tvShow = (props) => {
         <img
           className={styles.image}
           src={"https://image.tmdb.org/t/p/w500" + poster_path}
-          width="400"
-          height="550"
+          width={props.width} //400
+          height={props.height} //550
           alt="tvShowPoster"
         />
         <p>{name}</p>

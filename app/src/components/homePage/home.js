@@ -4,7 +4,6 @@ import ScrollContent from "../scrollContent/scrollContent";
 import styles from "./home.module.css";
 
 const home = (props) => {
-  console.log("styles: ", styles);
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeContent}>

@@ -17,6 +17,22 @@ export const fetchTvShows = () => {
   };
 };
 
+export const getTvShowsOnTheAir = () => {
+  return (dispatch) => {
+    fetch(
+      `${BASE_URL}tv/on_the_air?api_key=${API_KEY}&language=en-US&page=1&region=SE`
+    )
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({
+          type: actionTypes.GET_TVSHOWS_ON_THE_AIR,
+          payload: data,
+        })
+      )
+      .catch((error) => console.log(error));
+  };
+};
+
 export const tvShowInfo = (id) => (dispatch) => {
   dispatch({
     type: actionTypes.TVSHOW_INFO_LOADING,

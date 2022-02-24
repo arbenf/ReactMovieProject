@@ -86,13 +86,21 @@ class ScrollMovies extends Component {
             ref={this.moviesContainerWidth}
           >
             {this.props.movies.results.map((movie) => (
-              <Movie
-                styles={styles.movie}
+              <this.props.typeOfContent
+                styles={styles.content}
                 key={movie.id}
-                movie={movie}
+                content={movie}
                 width={"200"}
                 height={"300"}
               />
+              /* <Movie
+                styles={styles.movie}
+                key={movie.id}
+                movie={movie}
+                to={this.props.to}
+                width={"200"}
+                height={"300"}
+              /> */
             ))}
           </div>
         </div>

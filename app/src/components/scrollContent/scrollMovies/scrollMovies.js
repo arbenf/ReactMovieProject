@@ -30,7 +30,7 @@ class ScrollMovies extends Component {
   componentDidUpdate(prevProps) {
     let srollMoviesWidth = this.scrollMoviesWidth.current.offsetWidth;
     let moviesContainerWidth = this.moviesContainerWidth.current.offsetWidth;
-    if (this.props.movies !== prevProps.movies) {
+    if (this.props.typeOfContent !== prevProps.typeOfContent) {
       this.setState({ srollMoviesWidth, moviesContainerWidth });
     }
     console.log("componentDidUpdate");
@@ -85,22 +85,14 @@ class ScrollMovies extends Component {
             className={styles.moviesContainer}
             ref={this.moviesContainerWidth}
           >
-            {this.props.movies.results.map((movie) => (
-              <this.props.typeOfContent
+            {this.props.typeOfContent.results.map((c) => (
+              <this.props.typeOfContainer
                 styles={styles.content}
-                key={movie.id}
-                content={movie}
+                key={c.id}
+                content={c}
                 width={"200"}
                 height={"300"}
               />
-              /* <Movie
-                styles={styles.movie}
-                key={movie.id}
-                movie={movie}
-                to={this.props.to}
-                width={"200"}
-                height={"300"}
-              /> */
             ))}
           </div>
         </div>

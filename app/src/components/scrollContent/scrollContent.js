@@ -12,21 +12,21 @@ const scrollContent = (props) => {
     <React.Fragment>
       <ScrollMovies
         data={props.onGetUpcomingMovies}
-        movies={props.upComingMovies}
+        typeOfContent={props.upComingMovies}
         title={"Upcoming"}
-        typeOfContent={Movie}
+        typeOfContainer={Movie}
       />
       <ScrollMovies
         data={props.onGetNowPlayingMovies}
-        movies={props.nowPlayingMovies}
+        typeOfContent={props.nowPlayingMovies}
         title={"Now Playing"}
-        typeOfContent={Movie}
+        typeOfContainer={Movie}
       />
       <ScrollMovies
         data={props.onGetTvShowsOnTheAir}
-        movies={props.tvShowsOnTheAir}
+        typeOfContent={props.tvShowsOnTheAir}
         title={"Tv shows on the air"}
-        typeOfContent={TvShow}
+        typeOfContainer={TvShow}
       />
     </React.Fragment>
   );

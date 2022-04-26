@@ -10,11 +10,11 @@ const searchResults = (props) => {
   console.log("TVsearchResults: ", props.tvShows);
 
   const movieResults = props.movies.map((movie) => (
-    <Movie movie={movie} key={movie.id} />
+    <Movie content={movie} key={movie.id} />
   ));
 
   const tvShowResults = props.tvShows.map((tvShow) => (
-    <TvShow tvShow={tvShow} key={tvShow.id} />
+    <TvShow content={tvShow} key={tvShow.id} />
   ));
 
   return (

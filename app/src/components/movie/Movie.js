@@ -30,7 +30,7 @@ const movie = (props) => {
           height={props.height}
           alt="moviePoster"
         />
-        <p>{title}</p>
+        <p className={props.title}>{title}</p>
       </Link>
     </div>
   );

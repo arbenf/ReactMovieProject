@@ -88,6 +88,7 @@ class ScrollMovies extends Component {
             {this.props.typeOfContent.results.map((c) => (
               <this.props.typeOfContainer
                 styles={styles.content}
+                title={styles.title}
                 key={c.id}
                 content={c}
                 width={"200"}

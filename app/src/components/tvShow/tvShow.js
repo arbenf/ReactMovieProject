@@ -28,7 +28,7 @@ const tvShow = (props) => {
           height={props.height} //550
           alt="tvShowPoster"
         />
-        <p>{name}</p>
+        <p className={props.title}>{name}</p>
       </Link>
     </div>
   );

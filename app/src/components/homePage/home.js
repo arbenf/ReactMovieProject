@@ -7,7 +7,7 @@ const home = (props) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.homeContent}>
-        <Search styles={styles.homeInput} />
+        {/* <Search styles={styles.homeInput} /> */}
         <ScrollContent />
       </div>
     </div>

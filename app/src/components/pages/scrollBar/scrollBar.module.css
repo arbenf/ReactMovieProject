@@ -1,48 +1,5 @@
-.wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.movieInfoWrapper {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  /* background-color: grey; */
-  width: 1080px;
-}
-
-.movieInfoContainer {
-  width: 600px;
-}
-
-.actorCard {
-  margin-right: 10px;
-  /* width: 200px; */
-}
-
-.character {
-  color: #000; /* Fallback for older browsers */
-  color: rgba(0, 0, 0, 0.5);
-  margin-top: 5px;
-}
-
-img {
-  border-radius: 10px;
-}
-
-/* .actors ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    overflow: hidden;
-  }
-  
-  .actors ul li {
-    margin-right: 10px;
-  } */
-
 .scrollMovies {
-  width: 600px;
+  width: 770px;
   height: 300px;
   display: flex;
   justify-content: space-between;
@@ -60,6 +17,7 @@ img {
   padding: 5px;
   margin: 5px;
   transition: 0.5s;
+  height: 40px;
 }
 
 .scrollMovies button:hover {
@@ -71,20 +29,20 @@ img {
   /* align-items: center; */
   position: absolute;
   transition: 0.5s all ease-out;
-  height: 200px;
+  height: 280px;
 }
 
 /* .content {
-    width: 200px;
-    height: 370px;
-    margin-right: 20px;
-    background-color: rgb(238, 227, 227);
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
+  width: 200px;
+  height: 370px;
+  margin-right: 20px;
+  background-color: rgb(238, 227, 227);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
 .title {
   display: flex;
   flex-direction: column;

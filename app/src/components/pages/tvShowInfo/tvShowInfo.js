@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import * as actions from "../../../store/actions/personActions";
 import Loading from "../../loading/Loading";
 import styles from "./tvShowInfo.module.css";
+import ScrollBar from "../scrollBar/scrollBar";
 
 const tvShowInfo = (props) => {
   const passActorId = (actorId) => {
@@ -49,12 +50,16 @@ const tvShowInfo = (props) => {
 
   let actors = cast.map((actor) => {
     return (
-      <li key={actor.id} onClick={() => passActorId(actor.id)}>
+      <div
+        className={styles.actorCard}
+        key={actor.id}
+        onClick={() => passActorId(actor.id)}
+      >
         <Link to="/actorsInfo">
           <img
             src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
-            width="100"
-            height="150"
+            width="120"
+            // height="150"
             alt="profile_image"
           />
         </Link>
@@ -62,7 +67,7 @@ const tvShowInfo = (props) => {
           <p>{actor.original_name}</p>
           <p className={styles.character}>{actor.character}</p>
         </div>
-      </li>
+      </div>
     );
   });
 
@@ -71,46 +76,50 @@ const tvShowInfo = (props) => {
     .map((c) => <span key={c.id}>{c.name}</span>);
 
   let tvShowInfo = (
-    <div className={styles.tvShowInfoContainer}>
-      <img
-        className={styles.image}
-        src={"https://image.tmdb.org/t/p/w500" + backdrop_path}
-        width="600"
-        height="350"
-        alt="tvShowPoster"
-      />
-      <h3 className={styles.title}>{name}</h3>
+    <div className={styles.wrapper}>
+      <div className={styles.tvShowInfoWrapper}>
+        <div className={styles.tvShowInfoContainer}>
+          <img
+            className={styles.image}
+            src={"https://image.tmdb.org/t/p/w500" + backdrop_path}
+            width="800"
+            // height="350"
+            alt="tvShowPoster"
+          />
+          <h3 className={styles.title}>{name}</h3>
+          <div className={styles.info}>
+            <div className={styles.plot}>
+              <h3>Plot</h3>
+              {overview}
+            </div>
 
-      <div className={styles.plot}>
-        <h3>Plot</h3>
-        {overview}
-      </div>
-      <div className={styles.info}>
-        <div className={styles.genre}>
-          <b>Genre:</b>
-          {tvShowgenres}
-        </div>
-        <div className={styles.director}>
-          <b>Director: </b>
-          {director}
-        </div>
+            <div className={styles.genre}>
+              <b>Genre:</b>
+              {tvShowgenres}
+            </div>
+            <div className={styles.director}>
+              <b>Director: </b>
+              {director}
+            </div>
 
-        {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
-        <div className={styles.relaesed}>
-          <b>Release date: </b> {first_air_date}
+            {/* <div className={styles.imdbRating}>imdbRating: {imdbRating}</div> */}
+            <div className={styles.relaesed}>
+              <b>Release date: </b> {first_air_date}
+            </div>
+            <div className={styles.watchProviders}>
+              <p>
+                <b>Can be seen on (SE):</b> {watchMovie}
+              </p>
+              <p>
+                <b>Buy (SE):</b> {buyMovie}
+              </p>
+            </div>
+          </div>
+          <div className={styles.actors}>
+            <h3>Cast</h3>
+            <ScrollBar actors={actors} credits={props.credits} />
+          </div>
         </div>
-        <div className={styles.watchProviders}>
-          <p>
-            <b>Can be seen on (SE):</b> {watchMovie}
-          </p>
-          <p>
-            <b>Buy (SE):</b> {buyMovie}
-          </p>
-        </div>
-      </div>
-      <div className={styles.actors}>
-        <h3>Cast</h3>
-        <ul>{actors}</ul>
       </div>
     </div>
   );

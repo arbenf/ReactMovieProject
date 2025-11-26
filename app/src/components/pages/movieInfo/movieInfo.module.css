@@ -1,109 +1,133 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.movieInfoWrapper {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  background-color: rgba(35, 35, 35, 1);
+  color: white;
+}
+
 .movieInfoContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  /* gap: 10px; */
-  /* justify-items: center; */
-  grid-template-areas:
-    "title ."
-    "image info"
-    ". watchProviders"
-    "plot actors";
-}
-
-.image {
-  grid-area: image;
-  /* rundar hörnen */
-  border-radius: 8px;
-  justify-self: center;
-}
-
-.title {
-  grid-area: title;
-  /* margin: 100px; */
-  justify-self: center;
-}
-
-.movieDetails {
-  grid-area: movieDetails;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
 }
 
-.plot {
-  /* background-color: lightgrey; */
-  grid-area: plot;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.info {
-  grid-area: info;
-  padding: 10px;
-  /* background-color: lightgrey; */
-}
-
-.info > div {
-  padding: 2px;
-}
-
-.genre {
-  grid-area: genre;
-}
-
-.director {
-  grid-area: director;
-}
-
-.watchProviders {
-  grid-area: watchProviders;
-}
-
-.actors {
-  grid-area: actors;
-}
-
-.actors h3 {
-  margin-left: 40px;
-}
-
-.actors ul {
-  list-style: none;
-}
-
-.actors li {
-  display: flex;
-}
-
-.actors p {
-  padding: 0px;
-  margin: 0px;
-}
-
-.actors div {
-  margin-top: 115px;
-}
-
-.actors img {
-  margin: 0px 10px 10px 0px;
+.actorCard {
+  margin-right: 10px;
+  height: 300px;
 }
 
 .character {
-  color: #000; /* Fallback for older browsers */
-  color: rgba(0, 0, 0, 0.5);
+  color: #b0a6a6; /* Fallback for older browsers */
+  color: rgba(221, 211, 211, 0.5);
+  margin-top: 5px;
 }
 
-.imdbRating {
-  grid-area: imdbRating;
+.image {
+  border-radius: 10px;
 }
 
-.relaesed {
-  grid-area: relaesed;
+.info {
+  width: 800px;
+  margin-top: 40px;
 }
 
-.loading {
-  display: grid;
-  justify-items: center;
-  padding-top: 200px;
+.actors {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+.actors h3 {
+  width: 800px;
+}
+
+/* .actors ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  overflow: hidden;
+}
+
+.actors ul li {
+  margin-right: 10px;
+} */
+
+/* .scrollMovies {
+  width: 600px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scrollMovies button {
+  z-index: 1;
+  cursor: pointer;
+  font-weight: 900;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  transition: 0.5s;
+}
+
+.scrollMovies button:hover {
+  background-color: rgb(214, 208, 208);
+} */
+
+/* .moviesContainer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  transition: 0.5s all ease-out;
+  height: 200px;
+} */
+
+.content {
+  width: 200px;
+  height: 370px;
+  margin-right: 20px;
+  background-color: rgb(238, 227, 227);
+  border-radius: 10px;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+.title {
+  margin-top: 5px;
+}
+
+.genre {
+  margin-top: 20px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollMovies::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollMovies::-webkit-scrollbar-button {
+  height: 10px;
+  width: 10px;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollMovies {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollMovieContainer h2 {
+  font-weight: lighter;
 }

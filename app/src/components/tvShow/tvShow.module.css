@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.tvShowLink p {
+  margin-top: 5px;
+}
+
 .image {
   /* rundar hörnen */
   border-radius: 10px;

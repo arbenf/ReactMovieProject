@@ -1,8 +1,9 @@
-.actorDetails {
+/* .actorDetails {
   margin-bottom: 100px;
   display: grid;
-  grid-template-columns: 500px 1000px;
+  grid-template-columns: 400px 400px;
   grid-template-rows: auto;
+  width: 800px;
 }
 
 .image {
@@ -17,4 +18,27 @@
 
 .actorInfo p {
   margin: 2px;
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  width: 1000px;
+}
+
+.imageAndInfo {
+  display: flex;
+}
+
+.actorImage {
+  margin: 10px 10px 10px 0px;
+}
+
+.actorInfo {
+  margin-top: 60px;
 }

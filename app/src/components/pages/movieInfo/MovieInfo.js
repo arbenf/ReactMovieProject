@@ -21,6 +21,13 @@ const movieInfo = (props) => {
 
   const { SE } = props.watchProviders.results;
 
+  let trailers = props.movieTrailers.results.filter(
+    (object) => object.name == "Official Trailer"
+  );
+
+  let key = trailers.map((trailer) => trailer.key);
+  console.log("KEY: ", key);
+
   let watchMovie = null;
   let buyMovie = null;
 
@@ -71,13 +78,18 @@ const movieInfo = (props) => {
     <div className={styles.wrapper}>
       <div className={styles.movieInfoWrapper}>
         <div className={styles.movieInfoContainer}>
-          <img
+          {/* <img
             className={styles.image}
             src={"https://image.tmdb.org/t/p/w500" + backdrop_path}
             width="800"
             // height="350"
             alt="moviePoster"
-          />
+          /> */}
+          <iframe
+            width="620"
+            height="420"
+            src={"https://www.youtube.com/embed/" + key}
+          ></iframe>
           <h3 className={styles.title}>{title}</h3>
           <div className={styles.info}>
             <div className={styles.plot}>
@@ -117,7 +129,11 @@ const movieInfo = (props) => {
     </div>
   );
 
-  if (props.loadingMovie && props.loadingCredits) {
+  if (
+    props.loadingMovie &&
+    props.loadingCredits &&
+    props.loadingMovieTrailers
+  ) {
     movieInfo = (
       <div className={styles.loading}>
         <Loading />
@@ -133,6 +149,8 @@ const mapStateToProps = (state) => ({
   loadingCredits: state.movieCredits.loading,
   loadingMovie: state.movies.loading,
   watchProviders: state.movies.watchProviders,
+  loadingMovieTrailers: state.movies.movieTrailers.loading,
+  movieTrailers: state.movies.movieTrailers,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -150,6 +168,8 @@ movieInfo.propTypes = {
   watchProviders: PropTypes.object.isRequired,
   onGetActorDetails: PropTypes.func.isRequired,
   onGetActorImages: PropTypes.func.isRequired,
+  movieTrailers: PropTypes.object.isRequired,
+  loadingMovieTrailers: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(movieInfo);

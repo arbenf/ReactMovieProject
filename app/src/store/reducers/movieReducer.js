@@ -15,6 +15,9 @@ const initialState = {
   watchProviders: {
     results: {},
   },
+  movieTrailers: {
+    results: [],
+  },
   loading: false,
 };
 
@@ -66,6 +69,20 @@ const movieReducer = (state = initialState, action) => {
             ...action.payload.results,
           },
         },
+      };
+    case actionTypes.GET_MOVIE_TRAILERS_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionTypes.GET_MOVIE_TRAILERS:
+      return {
+        ...state,
+        movieTrailers: {
+          ...action.payload,
+          results: [...action.payload.results], //Array of objects
+        },
+        loading: false,
       };
     default:
       return state;

@@ -12,6 +12,7 @@ const movie = (props) => {
     props.onMovieInfo(id);
     props.onMovieCredits(id);
     props.onMovieWatchProviders(id);
+    props.onMovieTrailers(id);
   };
 
   const { poster_path, title, id } = props.content;
@@ -41,6 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     onMovieInfo: (id) => dispatch(movieActions.movieInfo(id)),
     onMovieCredits: (id) => dispatch(movieActions.movieCredits(id)),
     onMovieWatchProviders: (id) => dispatch(movieActions.getWatchProviders(id)),
+    onMovieTrailers: (id) => dispatch(movieActions.getMovieTrailers(id)),
   };
 };
 
@@ -48,6 +50,7 @@ movie.propTypes = {
   onMovieInfo: PropTypes.func.isRequired,
   onCredits: PropTypes.func.isRequired,
   onWatchProviders: PropTypes.func.isRequired,
+  onMovieTrailers: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(movie);

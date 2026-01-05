@@ -129,3 +129,18 @@ export const getWatchProviders = (movieId) => (dispatch) => {
     )
     .catch((error) => console.log(error));
 };
+
+export const getMovieTrailers = (id) => (dispatch) => {
+  dispatch({
+    type: actionTypes.GET_MOVIE_TRAILERS_LOADING,
+  });
+  fetch(`${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.GET_MOVIE_TRAILERS,
+        payload: data,
+      })
+    )
+    .catch((error) => console.log(error));
+};

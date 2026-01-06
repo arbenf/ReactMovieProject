@@ -12,6 +12,9 @@ const initialState = {
   watchProviders: {
     results: {},
   },
+  tvTrailers: {
+    results: [],
+  },
   loading: false,
 };
 
@@ -54,6 +57,19 @@ const tvShowReducer = (state = initialState, action) => {
           results: {
             ...action.payload.results,
           },
+        },
+      };
+    case actionTypes.GET_TV_TRAILERS_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionTypes.GET_TV_TRAILERS:
+      return {
+        ...state,
+        tvTrailers: {
+          ...action.payload,
+          results: [...action.payload.results],
         },
       };
     default:

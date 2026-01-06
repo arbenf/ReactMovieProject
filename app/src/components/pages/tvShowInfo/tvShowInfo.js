@@ -25,6 +25,14 @@ const tvShowInfo = (props) => {
 
   const { SE } = props.watchProviders.results;
 
+  const { results } = props.tvTrailers;
+
+  let trailer = results.filter((object) => object.name == "Trailer");
+
+  let key = trailer.map((object) => object.key);
+
+  console.log("RESULTS:: ", results);
+
   let watchMovie = null;
   let buyMovie = null;
 
@@ -79,13 +87,18 @@ const tvShowInfo = (props) => {
     <div className={styles.wrapper}>
       <div className={styles.tvShowInfoWrapper}>
         <div className={styles.tvShowInfoContainer}>
-          <img
+          {/* <img
             className={styles.image}
             src={"https://image.tmdb.org/t/p/w500" + backdrop_path}
             width="800"
             // height="350"
             alt="tvShowPoster"
-          />
+          /> */}
+          <iframe
+            width="620"
+            height="420"
+            src={"https://www.youtube.com/embed/" + key}
+          ></iframe>
           <h3 className={styles.title}>{name}</h3>
           <div className={styles.info}>
             <div className={styles.plot}>
@@ -124,7 +137,11 @@ const tvShowInfo = (props) => {
     </div>
   );
 
-  if (props.tvShowInfoLoading && props.creditsLoading) {
+  if (
+    props.tvShowInfoLoading &&
+    props.creditsLoading &&
+    props.tvTrailersloading
+  ) {
     tvShowInfo = (
       <div className={styles.loading}>
         <Loading />
@@ -141,6 +158,8 @@ const mapStateToProps = (state) => {
     watchProviders: state.tvShows.watchProviders,
     tvShowInfoLoading: state.tvShows.loading,
     creditsLoading: state.tvShowCredits.loading,
+    tvTrailersloading: state.tvShows.loading,
+    tvTrailers: state.tvShows.tvTrailers,
   };
 };
 
@@ -159,6 +178,8 @@ tvShowInfo.propTypes = {
   creditsLoading: PropTypes.bool.isRequired,
   onGetActorDetails: PropTypes.func.isRequired,
   onGetActorImages: PropTypes.func.isRequired,
+  tvTrailers: PropTypes.object.isRequired,
+  tvTrailersloading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(tvShowInfo);

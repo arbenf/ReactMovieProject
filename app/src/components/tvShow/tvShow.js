@@ -10,6 +10,7 @@ const tvShow = (props) => {
     props.onTvShowInfo(id);
     props.onCredits(id);
     props.onWatchProviders(id);
+    props.onTvTrailers(id);
   };
 
   const { poster_path, name, id } = props.content;
@@ -39,6 +40,7 @@ const mapDispatchToProps = (dispatch) => {
     onTvShowInfo: (id) => dispatch(actions.tvShowInfo(id)),
     onCredits: (id) => dispatch(actions.tvShowCredits(id)),
     onWatchProviders: (id) => dispatch(actions.getWatchProviders(id)),
+    onTvTrailers: (id) => dispatch(actions.getTvTrailers(id)),
   };
 };
 
@@ -46,6 +48,7 @@ tvShow.propTypes = {
   onTvShowInfo: PropTypes.func.isRequired,
   onCredits: PropTypes.func.isRequired,
   onWatchProviders: PropTypes.func.isRequired,
+  onTvTrailers: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(tvShow);

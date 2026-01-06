@@ -89,3 +89,18 @@ export const getWatchProviders = (id) => (dispatch) => {
     )
     .catch((error) => console.log(error));
 };
+
+export const getTvTrailers = (id) => (dispatch) => {
+  dispatch({
+    type: actionTypes.GET_TV_TRAILERS_LOADING,
+  });
+  fetch(`${BASE_URL}tv/${id}/videos?api_key=${API_KEY}&language=en-US`)
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({
+        type: actionTypes.GET_TV_TRAILERS,
+        payload: data,
+      })
+    )
+    .catch((error) => console.log(error));
+};

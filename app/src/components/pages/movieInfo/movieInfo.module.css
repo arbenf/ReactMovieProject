@@ -18,6 +18,10 @@
   padding: 40px;
 }
 
+.iframe {
+  border: black;
+}
+
 .actorCard {
   margin-right: 10px;
   height: 300px;

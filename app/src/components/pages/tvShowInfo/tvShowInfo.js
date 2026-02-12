@@ -95,6 +95,7 @@ const tvShowInfo = (props) => {
             alt="tvShowPoster"
           /> */}
           <iframe
+            className={styles.iframe}
             width="620"
             height="420"
             src={"https://www.youtube.com/embed/" + key}

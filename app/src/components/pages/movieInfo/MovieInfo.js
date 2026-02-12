@@ -86,6 +86,7 @@ const movieInfo = (props) => {
             alt="moviePoster"
           /> */}
           <iframe
+            className={styles.iframe}
             width="620"
             height="420"
             src={"https://www.youtube.com/embed/" + key}
